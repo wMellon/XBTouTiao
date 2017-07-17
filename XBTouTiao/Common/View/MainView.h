@@ -15,6 +15,7 @@
 //@property (nonatomic, strong) NSArray *tableViewArray;
 @property (nonatomic, strong) UIScrollView *titleScroll;
 @property (nonatomic, strong) UIScrollView *tableScroll;
+@property (nonatomic, strong) NSMutableArray *titleBtnArray;
 
 -(instancetype)initWithModel:(MainModel*)model layout:(MainLayout*)layout;
 

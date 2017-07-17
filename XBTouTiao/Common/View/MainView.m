@@ -19,7 +19,6 @@
 @property (nonatomic, strong) MainLayout *mainLayout;
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *lineView;
-@property (nonatomic, strong) NSMutableArray *titleBtnArray;
 
 @end
 

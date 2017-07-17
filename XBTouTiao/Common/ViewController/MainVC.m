@@ -67,13 +67,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         return;
     }
     double dIndex = scrollView.contentOffset.x / ScreenWidth;
-//    if(self.currentTitleIndex == dIndex){
-//        return;
-//    }
     NSInteger index = (NSInteger)(dIndex+0.5);
-//    if (index == self.titleSegment.selectedSegmentIndex) {
-//        return;
-    //    }
     if(self.currentTitleIndex == index){
         return;
     }
@@ -131,7 +125,17 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
 #pragma mark - action
 
 - (void)sliderToViewAtIndex:(NSInteger)index{
-    //上面的滚动
+    //titleScroll
+    //    self.mainView.titleScroll
+    //设置颜色
+    UIButton *btn = self.mainView.titleBtnArray[index];
+    [self.mainView.titleBtnArray enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(btn == button){
+            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        }else{
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }
+    }];
     
     UITableView *tableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:index];
     if(tableView.isHit){
