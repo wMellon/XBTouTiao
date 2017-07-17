@@ -1,0 +1,27 @@
+//
+//  XBFramework.pch
+//  XBFramework
+//
+//  Created by zoenet on 2017/2/21.
+//  Copyright © 2017年 xxb. All rights reserved.
+//
+
+#ifndef XBFramework_pch
+#define XBFramework_pch
+
+//系统
+#import <UIKit/UIKit.h>
+#import "MacroDefinition.h"
+//#import "GlobalClass.h"
+//
+//类别
+#import "UIView+Convenience.h"
+//#import "NSObject+XBModel.h"
+//
+//第三方
+//#import "SDAutoLayout.h"
+//#import "YYModel.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+//#import "MJRefresh.h"
+
+#endif /* XBFramework_pch */

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AppDelegate.h
 //  XBTouTiao
 //
 //  Created by xxb on 2017/7/4.
@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 
 @end
