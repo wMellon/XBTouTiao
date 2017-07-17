@@ -11,6 +11,6 @@
 @interface MainLayout : NSObject
 
 @property (nonatomic, assign) NSUInteger allTitleWidth;//所有标题的宽度，不含空隙
-@property (nonatomic, copy) NSArray *titleWidth;
+@property (nonatomic, strong) NSMutableArray *titleWidth;
 
 @end

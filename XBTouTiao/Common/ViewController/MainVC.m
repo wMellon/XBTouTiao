@@ -126,7 +126,26 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
 
 - (void)sliderToViewAtIndex:(NSInteger)index{
     //titleScroll
-    //    self.mainView.titleScroll
+    __block NSInteger previousCountW = 0;
+    [self.mainLayout.titleWidth enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(idx == index){
+            previousCountW += [obj integerValue] / 2;
+            *stop = YES;
+        }else{
+            previousCountW += [obj integerValue];
+        }
+    }];
+    CGFloat halfWidth = self.mainView.titleScroll.frameWidth / 2;
+    if(previousCountW <= halfWidth){
+        //处于左边
+        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(0, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:NO];
+    }else if(self.mainLayout.allTitleWidth - previousCountW <= halfWidth){
+        //处于右边
+        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(self.mainLayout.allTitleWidth - self.mainView.titleScroll.frameWidth, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:NO];
+    }else{
+        //处于中间
+        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(previousCountW - halfWidth, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:NO];
+    }
     //设置颜色
     UIButton *btn = self.mainView.titleBtnArray[index];
     [self.mainView.titleBtnArray enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -152,7 +171,6 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     tableView.frame = CGRectMake(ScreenWidth*index, 0, ScreenWidth, self.mainView.tableScroll.frameHeight);
     [self.mainView.tableScroll layoutIfNeeded];
     [self.mainView.tableScroll setContentOffset:CGPointMake(ScreenWidth * index, 0) animated:NO];
-    NSLog(@"%ld", (long)index);//打印没问题
     
     //加载数据----先不要预加载
     if(self.moduleArray.count < self.mainModel.titleArray.count){

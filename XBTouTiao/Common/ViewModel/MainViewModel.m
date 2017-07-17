@@ -32,7 +32,7 @@
         [tempArray addObject:@(temp)];
     }
     layout.allTitleWidth = sumWitdh;
-    layout.titleWidth = [tempArray copy];
+    layout.titleWidth = tempArray;
     return layout;
 }
 

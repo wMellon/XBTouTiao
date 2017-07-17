@@ -10,6 +10,11 @@
 @class MainModel;
 @class MainLayout;
 
+typedef NS_ENUM(NSInteger, ScrollType) {
+    ScrollForTitle = 0,
+    ScrollForTable = 1
+};
+
 @interface MainView : UIView
 
 //@property (nonatomic, strong) NSArray *tableViewArray;

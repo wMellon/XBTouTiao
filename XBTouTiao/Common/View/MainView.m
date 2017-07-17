@@ -61,6 +61,9 @@
         [self.mainModel.titleArray enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL * _Nonnull stop) {
             @strongify(self)
             CGFloat width = [self.mainLayout.titleWidth[idx] floatValue] + TitleBtnPadding * 2;
+            //因为间隙在view层累加，所以在这里更新
+            self.mainLayout.titleWidth[idx] = @(width);
+            self.mainLayout.allTitleWidth += TitleBtnPadding * 2;
             UIButton *btn = [self setupButton:CGRectMake(x, 0, width, TitleBtnHeight) title:self.mainModel.titleArray[idx]];
             [self.titleScroll addSubview:btn];
             [self.titleBtnArray addObject:btn];
