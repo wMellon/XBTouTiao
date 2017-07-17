@@ -43,7 +43,7 @@
             [self.reusePool enumerateObjectsUsingBlock:^(UITableView *t, NSUInteger idx, BOOL * _Nonnull stop) {
                 //获取最远的
                 if(temp == 0 ||
-                   temp > labs(t.titleIndex - index)){
+                   temp < labs(t.titleIndex - index)){
                     temp = labs(t.titleIndex - index);
                     tableView = t;
                 }
@@ -51,6 +51,7 @@
             tableView.titleIndex = index;
             tableView.isHit = NO;
             tableView.isReused = YES;
+            NSLog(@"重用%@", @(tableView.titleIndex));
         }
         //没有超过最大容量，实例化一个新的
         else {
@@ -59,11 +60,14 @@
             tableView.isReused = NO;
             tableView.isHit = NO;
             [self.reusePool addObject:tableView];
+            
+            NSLog(@"实例化%@", @(tableView.titleIndex));
         }
         
     }else {
         tableView.isHit = YES;
         tableView.isReused = YES;
+        NSLog(@"命中%@", @(tableView.titleIndex));
     }
     return tableView;
 }

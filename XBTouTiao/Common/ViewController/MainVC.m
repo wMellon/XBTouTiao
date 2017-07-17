@@ -138,13 +138,13 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     CGFloat halfWidth = self.mainView.titleScroll.frameWidth / 2;
     if(previousCountW <= halfWidth){
         //处于左边
-        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(0, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:NO];
+        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(0, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:YES];
     }else if(self.mainLayout.allTitleWidth - previousCountW <= halfWidth){
         //处于右边
-        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(self.mainLayout.allTitleWidth - self.mainView.titleScroll.frameWidth, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:NO];
+        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(self.mainLayout.allTitleWidth - self.mainView.titleScroll.frameWidth, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:YES];
     }else{
         //处于中间
-        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(previousCountW - halfWidth, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:NO];
+        [self.mainView.titleScroll scrollRectToVisible:CGRectMake(previousCountW - halfWidth, 0, self.mainView.titleScroll.frameWidth, self.mainView.titleScroll.frameHeight) animated:YES];
     }
     //设置颜色
     UIButton *btn = self.mainView.titleBtnArray[index];
@@ -159,6 +159,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     UITableView *tableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:index];
     if(tableView.isHit){
         //已有，并且可以直接展示的
+        NSLog(@"");
     }else if(tableView.isReused){
         //已有，但是需要替换数据源
 //        [tableView reloadData];
