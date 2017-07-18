@@ -99,6 +99,14 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     [self sliderToViewAtIndex:index];
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if([scrollView isKindOfClass:[UITableView class]]){
+        UITableView *tableView = (UITableView*)scrollView;
+        ModuleModel *module = self.moduleArray[tableView.titleIndex];
+        module.contentOffsetY = scrollView.contentOffset.y;
+    }
+}
+
 #pragma mark - tableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -162,7 +170,6 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         NSLog(@"");
     }else if(tableView.isReused){
         //已有，但是需要替换数据源
-//        [tableView reloadData];
     }else{
         //新建的
         tableView.dataSource = self;
@@ -180,7 +187,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     }
     
     if(!tableView.isHit){
-        [tableView reloadData];
+        [self tableViewReload:tableView];
     }
     [self loadNextData];
     [self loadPreviousData];
@@ -197,7 +204,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
             return;
         }
         nextTableView.titleIndex = self.currentTitleIndex + 1;
-        [nextTableView reloadData];
+        [self tableViewReload:nextTableView];
     }
 }
 
@@ -211,8 +218,19 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
             return;
         }
         previousTableView.titleIndex = self.currentTitleIndex - 1;
-        [previousTableView reloadData];
+        [self tableViewReload:previousTableView];
     }
+}
+
+
+/**
+ 重新加载数据，并且会自动滚到之前浏览的位置
+
+ */
+-(void)tableViewReload:(UITableView*)tableView{
+    ModuleModel *module = self.moduleArray[tableView.titleIndex];
+    [tableView setContentOffset:CGPointMake(0, module.contentOffsetY) animated:NO];
+    [tableView reloadData];
 }
 
 @end
