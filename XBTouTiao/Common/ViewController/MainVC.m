@@ -173,83 +173,46 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     [self.mainView.tableScroll layoutIfNeeded];
     [self.mainView.tableScroll setContentOffset:CGPointMake(ScreenWidth * index, 0) animated:NO];
     
-    //加载数据----先不要预加载
-    if(self.moduleArray.count < self.mainModel.titleArray.count){
+    //加载数据
+    if(self.currentTitleIndex >= self.moduleArray.count){
         ModuleModel *moduleModel = [MainViewModel getModuleByTitle:self.mainModel.titleArray[self.currentTitleIndex]];
         [self.moduleArray addObject:moduleModel];
     }
+    
     if(!tableView.isHit){
         [tableView reloadData];
     }
+    [self loadNextData];
+    [self loadPreviousData];
 }
 
-//加载数据，每次都加载三个tableView的数据
-//会根据currentTitleIndex来处理，加载currentTitleIndex及它左右两个model数据
-//-(void)loadData{
-//    //数据加载
-//    //加载当前屏幕要显示的数据
-//    if(self.currentTitleIndex > (NSInteger)(self.moduleArray.count - 1)){
-//        ModuleModel *moduleModel = [MainViewModel getModuleByTitle:self.mainModel.titleArray[self.currentTitleIndex]];
-//        [self.moduleArray addObject:moduleModel];
-//    }
-//    //加载下一个屏幕要显示的数据
-//    if(self.currentTitleIndex + 1 < self.mainModel.titleArray.count &&
-//       self.currentTitleIndex + 1 > (NSInteger)(self.moduleArray.count - 1)){
-//        ModuleModel *moduleModel = [MainViewModel getModuleByTitle:self.mainModel.titleArray[self.currentTitleIndex + 1]];
-//        [self.moduleArray addObject:moduleModel];
-//    }
-//    //数据渲染
-//    switch (self.currentTableView.tag) {
-//        case 0:
-//        {
-//            ModuleModel *moduleModel = self.moduleArray[self.currentTitleIndex];
-//            self.currentTableView.titleIndex = self.currentTitleIndex;
-//            [self.currentTableView reloadData];
-//            if(self.currentTitleIndex < self.moduleArray.count - 1){
-//                moduleModel = self.moduleArray[getTitleIndex(self.currentTitleIndex, 1)];
-//                ((UITableView*)self.mainView.tableViewArray[1]).titleIndex = getTitleIndex(self.currentTitleIndex, 1);
-//                [self.mainView.tableViewArray[1] reloadData];
-//            }
-//        }
-//            break;
-//        case 1:
-//        {
-//            ModuleModel *moduleModel = self.moduleArray[self.currentTitleIndex];
-//            self.currentTableView.titleIndex = self.currentTitleIndex;
-//            [self.currentTableView reloadData];
-//            
-//            if(self.currentTitleIndex > 0){
-//                NSInteger a = getTitleIndex(self.currentTitleIndex, -1);
-//                moduleModel = self.moduleArray[a];
-//                ((UITableView*)[self.mainView.tableViewArray firstObject]).titleIndex = getTitleIndex(self.currentTitleIndex, -1);
-//                [[self.mainView.tableViewArray firstObject] reloadData];
-//            }
-//            
-//            if(self.currentTitleIndex < self.moduleArray.count - 1){
-//                moduleModel = self.moduleArray[getTitleIndex(self.currentTitleIndex, 1)];
-//                ((UITableView*)self.mainView.tableViewArray[2]).titleIndex = getTitleIndex(self.currentTitleIndex, 1);
-//                [self.mainView.tableViewArray[2] reloadData];
-//            }
-//        }
-//            break;
-//        case 2:
-//        {
-//            ModuleModel *moduleModel = self.moduleArray[self.currentTitleIndex];
-//            self.currentTableView.titleIndex = self.currentTitleIndex;
-//            [self.currentTableView reloadData];
-//            if(self.currentTitleIndex > 0){
-//                moduleModel = self.moduleArray[getTitleIndex(self.currentTitleIndex, -1)];
-//                ((UITableView*)[self.mainView.tableViewArray firstObject]).titleIndex = getTitleIndex(self.currentTitleIndex, -1);
-//                [[self.mainView.tableViewArray firstObject] reloadData];
-//            }
-//        }
-//            break;
-//        default:
-//            break;
-//    }
-//}
-
-NSInteger getTitleIndex(NSInteger source, NSInteger offset){
-    return (NSInteger)(source + offset);
+-(void)loadNextData{
+    //加载后一页面展示的
+    if(self.currentTitleIndex + 1 < self.moduleArray.count){
+        //已加载过的页面，做预加载处理
+        UITableView *nextTableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:self.currentTitleIndex + 1];
+        nextTableView.frame = CGRectMake(ScreenWidth * (self.currentTitleIndex + 1), 0, ScreenWidth, self.mainView.tableScroll.frameHeight);
+        [self.mainView.tableScroll layoutIfNeeded];
+        if(nextTableView.isHit){
+            return;
+        }
+        nextTableView.titleIndex = self.currentTitleIndex + 1;
+        [nextTableView reloadData];
+    }
 }
+
+-(void)loadPreviousData{
+    //加载前一页面展示的
+    if(self.currentTitleIndex - 1 >= 0){
+        UITableView *previousTableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:self.currentTitleIndex - 1];
+        previousTableView.frame = CGRectMake(ScreenWidth * (self.currentTitleIndex - 1), 0, ScreenWidth, self.mainView.tableScroll.frameHeight);
+        [self.mainView.tableScroll layoutIfNeeded];
+        if(previousTableView.isHit){
+            return;
+        }
+        previousTableView.titleIndex = self.currentTitleIndex - 1;
+        [previousTableView reloadData];
+    }
+}
+
 @end
