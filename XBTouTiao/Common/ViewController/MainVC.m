@@ -15,6 +15,7 @@
 #import "UITableView+TitleIndex.h"
 #import "SliderPageReuseManager.h"
 #import "ThreePicCell.h"
+#import "LeftTextRightImageCell.h"
 
 #define PageSize 20 //每页20条
 
@@ -123,7 +124,8 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         return nil;
     }
     ModuleModel *moduleModel = self.moduleArray[tableView.titleIndex];
-    ThreePicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ThreePicCell class])];
+//    ThreePicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ThreePicCell class])];
+    LeftTextRightImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
     [cell setModel:nil];
     return cell;
 }
@@ -235,6 +237,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     UITableView *tableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:index];
     if(!tableView.isReused){
         [tableView registerClass:[ThreePicCell class] forCellReuseIdentifier:NSStringFromClass([ThreePicCell class])];
+        [tableView registerClass:[LeftTextRightImageCell class] forCellReuseIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 44.0;
     }

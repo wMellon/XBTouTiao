@@ -12,6 +12,7 @@
 //系统
 #import <UIKit/UIKit.h>
 #import "MacroDefinition.h"
+#import "ViewMacro.h"
 //#import "GlobalClass.h"
 //
 //类别

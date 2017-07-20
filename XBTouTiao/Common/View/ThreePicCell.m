@@ -1,7 +1,6 @@
 //
 //  ThreePicCell.m
 //  XBTouTiao
-//  带有三张图片的
 //
 //  Created by xxb on 2017/7/19.
 //  Copyright © 2017年 com.xb. All rights reserved.
@@ -55,15 +54,13 @@
 
 -(void)autoLayout{
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //leftMargin和left区别???
         make.left.equalTo(self.contentView).offset(15);
         make.top.equalTo(self.contentView).offset(10);
         make.right.equalTo(self.contentView).offset(-15);
         make.height.lessThanOrEqualTo(@(_titleLabel.font.lineHeight * 2));
     }];
-    [self.imageArray mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:5 leadSpacing:15 tailSpacing:15];
+    [self.imageArray mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:PicSpacing leadSpacing:15 tailSpacing:15];
     [self.imageArray mas_makeConstraints:^(MASConstraintMaker *make) {
-        //top和topMargin区别
         make.top.equalTo(_titleLabel.mas_bottom).offset(10);
         make.height.equalTo(_imageView1.mas_width).multipliedBy(0.6);
     }];

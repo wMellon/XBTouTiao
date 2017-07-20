@@ -25,6 +25,7 @@
 		F1534B0F1F1B57E80029EBED /* SliderPageReuseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1534B0E1F1B57E80029EBED /* SliderPageReuseManager.m */; };
 		F19E75D51F1FAEE1009E799E /* ThreePicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75D41F1FAEE1009E799E /* ThreePicCell.m */; };
 		F19E75D81F1FB085009E799E /* AuthorEvaluateTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */; };
+		F19E75DD1F209E61009E799E /* LeftTextRightImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75DC1F209E61009E799E /* LeftTextRightImageCell.m */; };
 		F1C0D76F1F15288A00847EA0 /* UITableView+TitleIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */; };
 		F1D3E8611F0CC10C00A500C5 /* UIView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8601F0CC10C00A500C5 /* UIView+Convenience.m */; };
 		F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8651F0CCD4A00A500C5 /* ModuleModel.m */; };
@@ -62,6 +63,9 @@
 		F19E75D41F1FAEE1009E799E /* ThreePicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePicCell.m; sourceTree = "<group>"; };
 		F19E75D61F1FB085009E799E /* AuthorEvaluateTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorEvaluateTimeView.h; sourceTree = "<group>"; };
 		F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorEvaluateTimeView.m; sourceTree = "<group>"; };
+		F19E75DB1F209E61009E799E /* LeftTextRightImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTextRightImageCell.h; sourceTree = "<group>"; };
+		F19E75DC1F209E61009E799E /* LeftTextRightImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTextRightImageCell.m; sourceTree = "<group>"; };
+		F19E75DE1F20A1E2009E799E /* ViewMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewMacro.h; sourceTree = "<group>"; };
 		F1C0D76D1F15288A00847EA0 /* UITableView+TitleIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TitleIndex.h"; sourceTree = "<group>"; };
 		F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TitleIndex.m"; sourceTree = "<group>"; };
 		F1D3E85F1F0CC10C00A500C5 /* UIView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenience.h"; sourceTree = "<group>"; };
@@ -165,6 +169,9 @@
 				F19E75D41F1FAEE1009E799E /* ThreePicCell.m */,
 				F19E75D61F1FB085009E799E /* AuthorEvaluateTimeView.h */,
 				F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */,
+				F19E75DB1F209E61009E799E /* LeftTextRightImageCell.h */,
+				F19E75DC1F209E61009E799E /* LeftTextRightImageCell.m */,
+				F19E75DE1F20A1E2009E799E /* ViewMacro.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,6 +389,7 @@
 				F11D78771F0B262200DAA868 /* MainView.m in Sources */,
 				F19E75D51F1FAEE1009E799E /* ThreePicCell.m in Sources */,
 				F11D788C1F0B35F200DAA868 /* MainViewModel.m in Sources */,
+				F19E75DD1F209E61009E799E /* LeftTextRightImageCell.m in Sources */,
 				F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */,
 				F11D787A1F0B26CF00DAA868 /* MainModel.m in Sources */,
 				F11D78831F0B27B500DAA868 /* main.m in Sources */,
