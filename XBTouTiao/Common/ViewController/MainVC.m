@@ -14,6 +14,7 @@
 #import "ModuleModel.h"
 #import "UITableView+TitleIndex.h"
 #import "SliderPageReuseManager.h"
+#import "ThreePicCell.h"
 
 #define PageSize 20 //每页20条
 
@@ -122,11 +123,8 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         return nil;
     }
     ModuleModel *moduleModel = self.moduleArray[tableView.titleIndex];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-    if(!cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellID"];
-    }
-    cell.textLabel.text = moduleModel.dataSource[indexPath.row];
+    ThreePicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ThreePicCell class])];
+    [cell setModel:nil];
     return cell;
 }
 
@@ -164,7 +162,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         }
     }];
     
-    UITableView *tableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:index];
+    UITableView *tableView = [self getTableView:index];
     if(tableView.isHit){
         //已有，并且可以直接展示的
         NSLog(@"");
@@ -197,7 +195,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     //加载后一页面展示的
     if(self.currentTitleIndex + 1 < self.moduleArray.count){
         //已加载过的页面，做预加载处理
-        UITableView *nextTableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:self.currentTitleIndex + 1];
+        UITableView *nextTableView = [self getTableView:self.currentTitleIndex + 1];
         nextTableView.frame = CGRectMake(ScreenWidth * (self.currentTitleIndex + 1), 0, ScreenWidth, self.mainView.tableScroll.frameHeight);
         [self.mainView.tableScroll layoutIfNeeded];
         if(nextTableView.isHit){
@@ -211,7 +209,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
 -(void)loadPreviousData{
     //加载前一页面展示的
     if(self.currentTitleIndex - 1 >= 0){
-        UITableView *previousTableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:self.currentTitleIndex - 1];
+        UITableView *previousTableView = [self getTableView:self.currentTitleIndex - 1];
         previousTableView.frame = CGRectMake(ScreenWidth * (self.currentTitleIndex - 1), 0, ScreenWidth, self.mainView.tableScroll.frameHeight);
         [self.mainView.tableScroll layoutIfNeeded];
         if(previousTableView.isHit){
@@ -233,4 +231,13 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     [tableView reloadData];
 }
 
+-(UITableView*)getTableView:(NSInteger)index{
+    UITableView *tableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:index];
+    if(!tableView.isReused){
+        [tableView registerClass:[ThreePicCell class] forCellReuseIdentifier:NSStringFromClass([ThreePicCell class])];
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.estimatedRowHeight = 44.0;
+    }
+    return tableView;
+}
 @end

@@ -22,6 +22,7 @@
 //#import "SDAutoLayout.h"
 //#import "YYModel.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "Masonry.h"
 //#import "MJRefresh.h"
 
 #endif /* XBFramework_pch */

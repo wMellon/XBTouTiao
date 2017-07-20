@@ -23,6 +23,8 @@
 		F11D78981F0B79D200DAA868 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F11D78931F0B79D200DAA868 /* Default.png */; };
 		F11D78991F0B79D200DAA868 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F11D78941F0B79D200DAA868 /* Default@2x.png */; };
 		F1534B0F1F1B57E80029EBED /* SliderPageReuseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1534B0E1F1B57E80029EBED /* SliderPageReuseManager.m */; };
+		F19E75D51F1FAEE1009E799E /* ThreePicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75D41F1FAEE1009E799E /* ThreePicCell.m */; };
+		F19E75D81F1FB085009E799E /* AuthorEvaluateTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */; };
 		F1C0D76F1F15288A00847EA0 /* UITableView+TitleIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */; };
 		F1D3E8611F0CC10C00A500C5 /* UIView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8601F0CC10C00A500C5 /* UIView+Convenience.m */; };
 		F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8651F0CCD4A00A500C5 /* ModuleModel.m */; };
@@ -56,6 +58,10 @@
 		F1534B0D1F1B57E80029EBED /* SliderPageReuseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderPageReuseManager.h; sourceTree = "<group>"; };
 		F1534B0E1F1B57E80029EBED /* SliderPageReuseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderPageReuseManager.m; sourceTree = "<group>"; };
 		F18CEF5777EE377CA992B872 /* Pods-XBTouTiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XBTouTiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-XBTouTiao/Pods-XBTouTiao.release.xcconfig"; sourceTree = "<group>"; };
+		F19E75D31F1FAEE1009E799E /* ThreePicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePicCell.h; sourceTree = "<group>"; };
+		F19E75D41F1FAEE1009E799E /* ThreePicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePicCell.m; sourceTree = "<group>"; };
+		F19E75D61F1FB085009E799E /* AuthorEvaluateTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorEvaluateTimeView.h; sourceTree = "<group>"; };
+		F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorEvaluateTimeView.m; sourceTree = "<group>"; };
 		F1C0D76D1F15288A00847EA0 /* UITableView+TitleIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TitleIndex.h"; sourceTree = "<group>"; };
 		F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TitleIndex.m"; sourceTree = "<group>"; };
 		F1D3E85F1F0CC10C00A500C5 /* UIView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenience.h"; sourceTree = "<group>"; };
@@ -155,6 +161,10 @@
 				F11D78761F0B262200DAA868 /* MainView.m */,
 				F1C0D76D1F15288A00847EA0 /* UITableView+TitleIndex.h */,
 				F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */,
+				F19E75D31F1FAEE1009E799E /* ThreePicCell.h */,
+				F19E75D41F1FAEE1009E799E /* ThreePicCell.m */,
+				F19E75D61F1FB085009E799E /* AuthorEvaluateTimeView.h */,
+				F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,9 +376,11 @@
 			files = (
 				F1D3E8611F0CC10C00A500C5 /* UIView+Convenience.m in Sources */,
 				F1534B0F1F1B57E80029EBED /* SliderPageReuseManager.m in Sources */,
+				F19E75D81F1FB085009E799E /* AuthorEvaluateTimeView.m in Sources */,
 				F1C0D76F1F15288A00847EA0 /* UITableView+TitleIndex.m in Sources */,
 				F11D78741F0B25B500DAA868 /* MainVC.m in Sources */,
 				F11D78771F0B262200DAA868 /* MainView.m in Sources */,
+				F19E75D51F1FAEE1009E799E /* ThreePicCell.m in Sources */,
 				F11D788C1F0B35F200DAA868 /* MainViewModel.m in Sources */,
 				F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */,
 				F11D787A1F0B26CF00DAA868 /* MainModel.m in Sources */,
