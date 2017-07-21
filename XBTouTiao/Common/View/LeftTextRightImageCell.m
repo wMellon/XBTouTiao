@@ -29,61 +29,73 @@
 }
 
 -(void)setupContentView{
+    _rightImage = [[UIImageView alloc] init];
+    _rightImage.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:_rightImage];
+    
     _leftLabel = [[UILabel alloc] init];
     _leftLabel.font = [UIFont systemFontOfSize:15];
     _leftLabel.textColor = [UIColor blackColor];
     _leftLabel.numberOfLines = 0;
-    [self.contentView addSubview:_leftLabel];
-    
-    _rightImage = [[UIImageView alloc] init];
-    [self.contentView addSubview:_rightImage];
-    
-    _footerView = [[AuthorEvaluateTimeView alloc] init];
-    [self.contentView addSubview:_footerView];
+    _leftLabel.preferredMaxLayoutWidth = ScreenWidth - 30 - 20 - SmallPicWidth * 0.6;
+//    [self.contentView addSubview:_leftLabel];
+//    
+//    
+//    _footerView = [[AuthorEvaluateTimeView alloc] init];
+//    [self.contentView addSubview:_footerView];
 }
 
 -(void)autoLayout{
     //文本只有一行时，文本居中，footer
     //
-    [_rightImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-RightMargin);
-        make.top.equalTo(self.contentView).offset(TopMargin);
-        make.width.mas_equalTo(SmallPicWidth);
-        make.height.equalTo(_rightImage.mas_width).multipliedBy(0.6);
-    }];
-    [_leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(LeftMargin);
-        make.top.equalTo(self.contentView).offset(TopMargin);
-        make.right.equalTo(_rightImage.mas_left).offset(-20);
-        //高度最少两行，最大三行
-        make.height.mas_lessThanOrEqualTo(_leftLabel.font.lineHeight * 3);
-        make.height.mas_greaterThanOrEqualTo(_leftLabel.font.lineHeight * 2);
-    }];
-    [self.contentView layoutIfNeeded];
-    //footer的布局
-    NSInteger numberOfLines = _leftLabel.frameHeight / _leftLabel.font.lineHeight;
-    if(numberOfLines == 3){
-        [_footerView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.contentView).offset(LeftMargin);
-            make.top.equalTo(_rightImage.mas_bottom).offset(TopMargin);
-            make.right.equalTo(self.contentView).offset(-RightMargin);
-            make.bottom.equalTo(self.contentView).offset(-BottomMargin);
-        }];
-    }else{
-        [_footerView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.contentView).offset(LeftMargin);
-            make.top.equalTo(_leftLabel.mas_bottom).offset(TopMargin);
-            make.right.equalTo(_rightImage.mas_left).offset(-RightMargin);
-            make.bottom.equalTo(_rightImage);
-            make.bottom.equalTo(self.contentView).offset(-BottomMargin);
-        }];
-    }
+//    [_rightImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self.contentView).offset(-RightMargin);
+//        make.top.equalTo(self.contentView).offset(TopMargin);
+//        make.width.mas_equalTo(SmallPicWidth);
+//        make.height.equalTo(_rightImage.mas_width).multipliedBy(0.6);
+//        make.bottom.equalTo(self.contentView).offset(-BottomMargin);
+//    }];
+//    [_leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.contentView).offset(LeftMargin);
+//        make.top.equalTo(self.contentView).offset(TopMargin);
+//        make.right.equalTo(_rightImage.mas_left).offset(-20);
+//        //高度最少两行，最大三行
+//        make.height.mas_greaterThanOrEqualTo(_leftLabel.font.lineHeight * 2);
+//        make.height.mas_lessThanOrEqualTo(_leftLabel.font.lineHeight * 3);
+//    }];
+//    [_footerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.contentView).offset(LeftMargin);
+//        make.top.equalTo(_rightImage.mas_bottom).offset(TopMargin);
+//        make.right.equalTo(self.contentView).offset(-RightMargin);
+//        make.height.mas_equalTo(12);
+//        //            make.bottom.equalTo(self.contentView).offset(-BottomMargin);
+//    }];
+//    [self layoutIfNeeded];
+//    //footer的布局
+//    NSInteger numberOfLines = _leftLabel.frameHeight / _leftLabel.font.lineHeight;
+//    if(numberOfLines == 3){
+//        [_footerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self.contentView).offset(LeftMargin);
+//            make.top.equalTo(_rightImage.mas_bottom).offset(TopMargin);
+//            make.right.equalTo(self.contentView).offset(-RightMargin);
+//            make.height.mas_equalTo(12);
+////            make.bottom.equalTo(self.contentView).offset(-BottomMargin);
+//        }];
+//    }else{
+//        [_footerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self.contentView).offset(LeftMargin);
+//            make.top.equalTo(_leftLabel.mas_bottom).offset(TopMargin);
+//            make.right.equalTo(_rightImage.mas_left).offset(-RightMargin);
+//            make.bottom.equalTo(_rightImage);
+////            make.bottom.equalTo(self.contentView).offset(-BottomMargin);
+//        }];
+//    }
 }
 
 -(void)setModel:(id)moodel{
-    _leftLabel.text = @"水电费卡萨丁发哭死了公司的噶";
+    _leftLabel.text = @"水电费卡萨丁发哭死了公司的噶水电费卡萨丁发哭死了公司的噶水电费卡萨丁发哭死了公司的噶";
     _rightImage.image = [UIImage imageNamed:@"Default"];
-    [_footerView setModel:nil];
+//    [_footerView setModel:nil];
 }
 
 @end

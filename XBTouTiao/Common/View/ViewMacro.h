@@ -17,5 +17,12 @@
 #define LeftMargin 15
 #define RightMargin 15
 #define BottomMargin 10
+#define PicTextMarginTop 10 //图文
+#define TextSpacing 10//文本间隔
+
+//cellType
+typedef NS_ENUM(NSInteger,CellType){
+    CellTypeTopTextBottomPic = 0
+};
 
 #endif /* ViewMacro_h */

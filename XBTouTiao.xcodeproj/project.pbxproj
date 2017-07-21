@@ -23,9 +23,15 @@
 		F11D78981F0B79D200DAA868 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F11D78931F0B79D200DAA868 /* Default.png */; };
 		F11D78991F0B79D200DAA868 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F11D78941F0B79D200DAA868 /* Default@2x.png */; };
 		F1534B0F1F1B57E80029EBED /* SliderPageReuseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1534B0E1F1B57E80029EBED /* SliderPageReuseManager.m */; };
-		F19E75D51F1FAEE1009E799E /* ThreePicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75D41F1FAEE1009E799E /* ThreePicCell.m */; };
+		F19E75D51F1FAEE1009E799E /* TopTextBottomPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75D41F1FAEE1009E799E /* TopTextBottomPicCell.m */; };
 		F19E75D81F1FB085009E799E /* AuthorEvaluateTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */; };
 		F19E75DD1F209E61009E799E /* LeftTextRightImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75DC1F209E61009E799E /* LeftTextRightImageCell.m */; };
+		F19E75E51F219AB1009E799E /* TopTextBottomPicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75E41F219AB1009E799E /* TopTextBottomPicLayout.m */; };
+		F19E75E81F219C1E009E799E /* TopTextBottomPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75E71F219C1E009E799E /* TopTextBottomPicModel.m */; };
+		F19E75EB1F219C96009E799E /* AuthorEvaluateTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75EA1F219C96009E799E /* AuthorEvaluateTimeModel.m */; };
+		F19E75EE1F21A67C009E799E /* BaseLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75ED1F21A67C009E799E /* BaseLayout.m */; };
+		F19E75F11F21A87A009E799E /* AuthorEvaluateTimeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75F01F21A87A009E799E /* AuthorEvaluateTimeLayout.m */; };
+		F19E75F51F2203F4009E799E /* NSString+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75F41F2203F4009E799E /* NSString+Extend.m */; };
 		F1C0D76F1F15288A00847EA0 /* UITableView+TitleIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */; };
 		F1D3E8611F0CC10C00A500C5 /* UIView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8601F0CC10C00A500C5 /* UIView+Convenience.m */; };
 		F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8651F0CCD4A00A500C5 /* ModuleModel.m */; };
@@ -59,13 +65,25 @@
 		F1534B0D1F1B57E80029EBED /* SliderPageReuseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderPageReuseManager.h; sourceTree = "<group>"; };
 		F1534B0E1F1B57E80029EBED /* SliderPageReuseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderPageReuseManager.m; sourceTree = "<group>"; };
 		F18CEF5777EE377CA992B872 /* Pods-XBTouTiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XBTouTiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-XBTouTiao/Pods-XBTouTiao.release.xcconfig"; sourceTree = "<group>"; };
-		F19E75D31F1FAEE1009E799E /* ThreePicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePicCell.h; sourceTree = "<group>"; };
-		F19E75D41F1FAEE1009E799E /* ThreePicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreePicCell.m; sourceTree = "<group>"; };
+		F19E75D31F1FAEE1009E799E /* TopTextBottomPicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTextBottomPicCell.h; sourceTree = "<group>"; };
+		F19E75D41F1FAEE1009E799E /* TopTextBottomPicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTextBottomPicCell.m; sourceTree = "<group>"; };
 		F19E75D61F1FB085009E799E /* AuthorEvaluateTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorEvaluateTimeView.h; sourceTree = "<group>"; };
 		F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorEvaluateTimeView.m; sourceTree = "<group>"; };
 		F19E75DB1F209E61009E799E /* LeftTextRightImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTextRightImageCell.h; sourceTree = "<group>"; };
 		F19E75DC1F209E61009E799E /* LeftTextRightImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTextRightImageCell.m; sourceTree = "<group>"; };
 		F19E75DE1F20A1E2009E799E /* ViewMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewMacro.h; sourceTree = "<group>"; };
+		F19E75E31F219AB1009E799E /* TopTextBottomPicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTextBottomPicLayout.h; sourceTree = "<group>"; };
+		F19E75E41F219AB1009E799E /* TopTextBottomPicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTextBottomPicLayout.m; sourceTree = "<group>"; };
+		F19E75E61F219C1E009E799E /* TopTextBottomPicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTextBottomPicModel.h; sourceTree = "<group>"; };
+		F19E75E71F219C1E009E799E /* TopTextBottomPicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTextBottomPicModel.m; sourceTree = "<group>"; };
+		F19E75E91F219C96009E799E /* AuthorEvaluateTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorEvaluateTimeModel.h; sourceTree = "<group>"; };
+		F19E75EA1F219C96009E799E /* AuthorEvaluateTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorEvaluateTimeModel.m; sourceTree = "<group>"; };
+		F19E75EC1F21A67C009E799E /* BaseLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLayout.h; sourceTree = "<group>"; };
+		F19E75ED1F21A67C009E799E /* BaseLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLayout.m; sourceTree = "<group>"; };
+		F19E75EF1F21A87A009E799E /* AuthorEvaluateTimeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorEvaluateTimeLayout.h; sourceTree = "<group>"; };
+		F19E75F01F21A87A009E799E /* AuthorEvaluateTimeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorEvaluateTimeLayout.m; sourceTree = "<group>"; };
+		F19E75F31F2203F4009E799E /* NSString+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extend.h"; sourceTree = "<group>"; };
+		F19E75F41F2203F4009E799E /* NSString+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extend.m"; sourceTree = "<group>"; };
 		F1C0D76D1F15288A00847EA0 /* UITableView+TitleIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TitleIndex.h"; sourceTree = "<group>"; };
 		F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TitleIndex.m"; sourceTree = "<group>"; };
 		F1D3E85F1F0CC10C00A500C5 /* UIView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenience.h"; sourceTree = "<group>"; };
@@ -154,6 +172,10 @@
 				F11D78791F0B26CF00DAA868 /* MainModel.m */,
 				F1D3E8641F0CCD4A00A500C5 /* ModuleModel.h */,
 				F1D3E8651F0CCD4A00A500C5 /* ModuleModel.m */,
+				F19E75E61F219C1E009E799E /* TopTextBottomPicModel.h */,
+				F19E75E71F219C1E009E799E /* TopTextBottomPicModel.m */,
+				F19E75E91F219C96009E799E /* AuthorEvaluateTimeModel.h */,
+				F19E75EA1F219C96009E799E /* AuthorEvaluateTimeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,8 +187,8 @@
 				F11D78761F0B262200DAA868 /* MainView.m */,
 				F1C0D76D1F15288A00847EA0 /* UITableView+TitleIndex.h */,
 				F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */,
-				F19E75D31F1FAEE1009E799E /* ThreePicCell.h */,
-				F19E75D41F1FAEE1009E799E /* ThreePicCell.m */,
+				F19E75D31F1FAEE1009E799E /* TopTextBottomPicCell.h */,
+				F19E75D41F1FAEE1009E799E /* TopTextBottomPicCell.m */,
 				F19E75D61F1FB085009E799E /* AuthorEvaluateTimeView.h */,
 				F19E75D71F1FB085009E799E /* AuthorEvaluateTimeView.m */,
 				F19E75DB1F209E61009E799E /* LeftTextRightImageCell.h */,
@@ -203,8 +225,14 @@
 		F11D78851F0B2AFD00DAA868 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				F19E75EC1F21A67C009E799E /* BaseLayout.h */,
+				F19E75ED1F21A67C009E799E /* BaseLayout.m */,
 				F11D78861F0B2B0800DAA868 /* MainLayout.h */,
 				F11D78871F0B2B0800DAA868 /* MainLayout.m */,
+				F19E75E31F219AB1009E799E /* TopTextBottomPicLayout.h */,
+				F19E75E41F219AB1009E799E /* TopTextBottomPicLayout.m */,
+				F19E75EF1F21A87A009E799E /* AuthorEvaluateTimeLayout.h */,
+				F19E75F01F21A87A009E799E /* AuthorEvaluateTimeLayout.m */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -235,6 +263,8 @@
 			children = (
 				F1D3E85F1F0CC10C00A500C5 /* UIView+Convenience.h */,
 				F1D3E8601F0CC10C00A500C5 /* UIView+Convenience.m */,
+				F19E75F31F2203F4009E799E /* NSString+Extend.h */,
+				F19E75F41F2203F4009E799E /* NSString+Extend.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -381,20 +411,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19E75F11F21A87A009E799E /* AuthorEvaluateTimeLayout.m in Sources */,
 				F1D3E8611F0CC10C00A500C5 /* UIView+Convenience.m in Sources */,
 				F1534B0F1F1B57E80029EBED /* SliderPageReuseManager.m in Sources */,
 				F19E75D81F1FB085009E799E /* AuthorEvaluateTimeView.m in Sources */,
 				F1C0D76F1F15288A00847EA0 /* UITableView+TitleIndex.m in Sources */,
 				F11D78741F0B25B500DAA868 /* MainVC.m in Sources */,
+				F19E75EB1F219C96009E799E /* AuthorEvaluateTimeModel.m in Sources */,
 				F11D78771F0B262200DAA868 /* MainView.m in Sources */,
-				F19E75D51F1FAEE1009E799E /* ThreePicCell.m in Sources */,
+				F19E75D51F1FAEE1009E799E /* TopTextBottomPicCell.m in Sources */,
 				F11D788C1F0B35F200DAA868 /* MainViewModel.m in Sources */,
 				F19E75DD1F209E61009E799E /* LeftTextRightImageCell.m in Sources */,
 				F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */,
 				F11D787A1F0B26CF00DAA868 /* MainModel.m in Sources */,
+				F19E75E51F219AB1009E799E /* TopTextBottomPicLayout.m in Sources */,
 				F11D78831F0B27B500DAA868 /* main.m in Sources */,
+				F19E75EE1F21A67C009E799E /* BaseLayout.m in Sources */,
 				F11D78881F0B2B0800DAA868 /* MainLayout.m in Sources */,
 				F11D78811F0B27B500DAA868 /* AppDelegate.m in Sources */,
+				F19E75E81F219C1E009E799E /* TopTextBottomPicModel.m in Sources */,
+				F19E75F51F2203F4009E799E /* NSString+Extend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

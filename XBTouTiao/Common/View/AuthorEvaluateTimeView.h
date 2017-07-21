@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AuthorEvaluateTimeModel;
+@class AuthorEvaluateTimeLayout;
 
 @interface AuthorEvaluateTimeView : UIView
 
--(void)setModel:(id)model;
+-(void)setModel:(AuthorEvaluateTimeModel*)model andLayout:(AuthorEvaluateTimeLayout*)layout;
 
 @end

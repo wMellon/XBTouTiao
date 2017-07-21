@@ -14,8 +14,9 @@
 #import "ModuleModel.h"
 #import "UITableView+TitleIndex.h"
 #import "SliderPageReuseManager.h"
-#import "ThreePicCell.h"
+#import "TopTextBottomPicCell.h"
 #import "LeftTextRightImageCell.h"
+#import "TopTextBottomPicLayout.h"
 
 #define PageSize 20 //每页20条
 
@@ -111,6 +112,15 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
 
 #pragma mark - tableView
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView.titleIndex >= self.moduleArray.count){
+        return 0;
+    }
+    ModuleModel *moduleModel = self.moduleArray[tableView.titleIndex];
+    TopTextBottomPicLayout *layout = moduleModel.layoutSoure[indexPath.row];
+    return layout.cellHeight;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(tableView.titleIndex >= self.moduleArray.count){
         return 0;
@@ -124,9 +134,9 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         return nil;
     }
     ModuleModel *moduleModel = self.moduleArray[tableView.titleIndex];
-//    ThreePicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ThreePicCell class])];
-    LeftTextRightImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
-    [cell setModel:nil];
+    TopTextBottomPicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TopTextBottomPicCell class])];
+//    LeftTextRightImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
+    [cell setModel:moduleModel.dataSource[indexPath.row] andLayout:moduleModel.layoutSoure[indexPath.row]];
     return cell;
 }
 
@@ -182,15 +192,23 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     
     //加载数据
     if(self.currentTitleIndex >= self.moduleArray.count){
-        ModuleModel *moduleModel = [MainViewModel getModuleByTitle:self.mainModel.titleArray[self.currentTitleIndex]];
-        [self.moduleArray addObject:moduleModel];
+        @weakify(self)
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            @strongify(self)
+            ModuleModel *moduleModel = [MainViewModel getModuleByTitle:self.mainModel.titleArray[self.currentTitleIndex]];
+            [self.moduleArray addObject:moduleModel];
+            
+            if(!tableView.isHit){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    @strongify(self)
+                    [self tableViewReload:tableView];
+                });
+            }
+            //这边要注意，显示时需要回到主线程。。。。
+            [self loadNextData];
+            [self loadPreviousData];
+        });
     }
-    
-    if(!tableView.isHit){
-        [self tableViewReload:tableView];
-    }
-    [self loadNextData];
-    [self loadPreviousData];
 }
 
 -(void)loadNextData{
@@ -236,10 +254,10 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
 -(UITableView*)getTableView:(NSInteger)index{
     UITableView *tableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:index];
     if(!tableView.isReused){
-        [tableView registerClass:[ThreePicCell class] forCellReuseIdentifier:NSStringFromClass([ThreePicCell class])];
+        [tableView registerClass:[TopTextBottomPicCell class] forCellReuseIdentifier:NSStringFromClass([TopTextBottomPicCell class])];
         [tableView registerClass:[LeftTextRightImageCell class] forCellReuseIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
-        tableView.rowHeight = UITableViewAutomaticDimension;
-        tableView.estimatedRowHeight = 44.0;
+//        tableView.rowHeight = UITableViewAutomaticDimension;
+//        tableView.estimatedRowHeight = 44.0;
     }
     return tableView;
 }

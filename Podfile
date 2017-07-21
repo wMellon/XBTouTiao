@@ -7,5 +7,4 @@ target 'XBTouTiao' do
 
   # Pods for XBTouTiao
   pod 'ReactiveCocoa', '~> 2.0' #函数响应式编程框架
-  pod 'Masonry'
 end

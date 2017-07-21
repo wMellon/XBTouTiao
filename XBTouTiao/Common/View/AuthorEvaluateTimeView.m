@@ -7,6 +7,8 @@
 //
 
 #import "AuthorEvaluateTimeView.h"
+#import "AuthorEvaluateTimeModel.h"
+#import "AuthorEvaluateTimeLayout.h"
 
 @interface AuthorEvaluateTimeView()
 
@@ -24,61 +26,61 @@
     self = [super init];
     if (self) {
         [self setupContentView];
-        [self autoLayout];
     }
     return self;
 }
 
 -(void)setupContentView{
-    _authorLabel = [[UILabel alloc] init];
-    setupLabel(_authorLabel);
-    [self addSubview:_authorLabel];
-    
-    _evaluateLabel = [[UILabel alloc] init];
-    setupLabel(_evaluateLabel);
-    [self addSubview:_evaluateLabel];
-    
-    _timeLabel = [[UILabel alloc] init];
-    setupLabel(_timeLabel);
-    [self addSubview:_timeLabel];
-    
-    _loseInterestBtn = [[UIButton alloc] init];
-    [_loseInterestBtn setImage:nil forState:UIControlStateNormal];
-    [self addSubview:_loseInterestBtn];
+    [self addSubview:[self authorLabel]];
+    [self addSubview:[self evaluateLabel]];
+    [self addSubview:[self timeLabel]];
+    [self addSubview:[self loseInterestBtn]];
 }
 
--(void)autoLayout{
-    [_authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
-        make.top.equalTo(self);
-        make.width.lessThanOrEqualTo(@(100));
-        make.height.equalTo(@(_authorLabel.font.pointSize));
-        make.bottom.equalTo(self);
-    }];
-    [_evaluateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_authorLabel.mas_right).offset(10);
-        make.top.equalTo(self);
-        make.width.lessThanOrEqualTo(@(50));
-        make.height.equalTo(@(_evaluateLabel.font.pointSize));
-    }];
-    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_evaluateLabel.mas_right).offset(10);
-        make.top.equalTo(self);
-        make.width.lessThanOrEqualTo(@(100));
-        make.height.equalTo(@(_timeLabel.font.pointSize));
-    }];
+-(UILabel *)authorLabel{
+    if(!_authorLabel){
+        _authorLabel = [[UILabel alloc] init];
+        _authorLabel.font = [UIFont systemFontOfSize:12];
+        _authorLabel.textColor = RGB(153, 153, 153);
+    }
+    return _authorLabel;
+}
+
+-(UILabel *)evaluateLabel{
+    if(!_evaluateLabel){
+        _evaluateLabel = [[UILabel alloc] init];
+        _evaluateLabel.font = [UIFont systemFontOfSize:12];
+        _evaluateLabel.textColor = RGB(153, 153, 153);
+    }
+    return _evaluateLabel;
+}
+
+-(UILabel *)timeLabel{
+    if(!_timeLabel){
+        _timeLabel = [[UILabel alloc] init];
+        _timeLabel.font = [UIFont systemFontOfSize:12];
+        _timeLabel.textColor = RGB(153, 153, 153);
+    }
+    return _timeLabel;
+}
+
+-(UIButton *)loseInterestBtn{
+    if(!_loseInterestBtn){
+        _loseInterestBtn = [[UIButton alloc] init];
+    }
+    return _loseInterestBtn;
+}
+
+-(void)setModel:(AuthorEvaluateTimeModel*)model andLayout:(AuthorEvaluateTimeLayout*)layout{
+    _authorLabel.text = model.authorName;
+    _authorLabel.frame = layout.authorFrame;
     
+    _evaluateLabel.text = model.evaluateStr;
+    _evaluateLabel.frame = layout.evaluateFrame;
+    
+    _timeLabel.text = model.time;
+    _timeLabel.frame = layout.timeFrame;
 }
 
--(void)setModel:(id)model{
-    _authorLabel.text = @"西瓜太爷";
-    _evaluateLabel.text = @"99评论";
-    _timeLabel.text = @"刚刚";
-}
-
-void setupLabel(UILabel *label){
-    label.font = [UIFont systemFontOfSize:12];
-    label.textColor = RGB(153, 153, 153);
-}
 
 @end
