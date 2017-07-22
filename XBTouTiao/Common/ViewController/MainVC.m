@@ -17,6 +17,8 @@
 #import "TopTextBottomPicCell.h"
 #import "LeftTextRightImageCell.h"
 #import "TopTextBottomPicLayout.h"
+#import "TopTextBottomPicModel.h"
+#import "ImageManager.h"
 
 #define PageSize 20 //每页20条
 
@@ -136,7 +138,24 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     ModuleModel *moduleModel = self.moduleArray[tableView.titleIndex];
     TopTextBottomPicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TopTextBottomPicCell class])];
 //    LeftTextRightImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
-    [cell setModel:moduleModel.dataSource[indexPath.row] andLayout:moduleModel.layoutSoure[indexPath.row]];
+    TopTextBottomPicModel *model = moduleModel.dataSource[indexPath.row];
+    TopTextBottomPicLayout *layout = moduleModel.layoutSoure[indexPath.row];
+    [cell setModel:model andLayout:layout];
+    //在这里开启加载、解析图片
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [model.picUrlArray enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIImage *image = [[ImageManager shareInstance] parseByImageName:imageName andWidth:layout.image1Frame.size.width height:layout.image1Frame.size.height];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(idx == 0){
+                    cell.imageView1.image = image;
+                }else if(idx == 1){
+                    cell.imageView2.image = image;
+                }else if(idx == 2){
+                    cell.imageView3.image = image;
+                }
+            });
+        }];
+    });
     return cell;
 }
 
@@ -256,8 +275,6 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     if(!tableView.isReused){
         [tableView registerClass:[TopTextBottomPicCell class] forCellReuseIdentifier:NSStringFromClass([TopTextBottomPicCell class])];
         [tableView registerClass:[LeftTextRightImageCell class] forCellReuseIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
-//        tableView.rowHeight = UITableViewAutomaticDimension;
-//        tableView.estimatedRowHeight = 44.0;
     }
     return tableView;
 }

@@ -63,7 +63,7 @@ void randomModel(ModuleModel *moduleModel){
         {
             TopTextBottomPicModel *model = [[TopTextBottomPicModel alloc] init];
             model.title = randomTitle();
-            model.picUrlArray = @[@"Default",@"Default",@"Default"];
+            model.picUrlArray = [MainViewModel getImage:3];
             AuthorEvaluateTimeModel *author = [[AuthorEvaluateTimeModel alloc] init];
             author.authorName = @"呱呱";
             author.evaluateCount = randomEvaluate();
@@ -89,6 +89,37 @@ NSString* randomTitle(){
 NSInteger randomEvaluate(){
     NSArray *evaluateArray = @[@(0),@(10),@(88),@(888)];
     return [evaluateArray[arc4random() % evaluateArray.count] integerValue];
+}
+
+static NSArray *imageArray;
+static NSUInteger imageIndex;
+/**
+ 获取多少个图片，不重复
+
+ */
++(id)getImage:(NSUInteger)count{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        imageArray = [[NSBundle mainBundle] pathsForResourcesOfType:@"JPG" inDirectory:@""];
+    });
+    if(imageArray.count - 1 < imageIndex + 3){
+        imageIndex = 0;
+    }
+    if(count == 1){
+        return imageArray[imageIndex++];
+    }else{
+        return @[imageArray[imageIndex++],imageArray[imageIndex++],imageArray[imageIndex++]];
+    }
+}
+
+#pragma mark - 图片操作
+
++(void)parsePic:(id)pics{
+    if([pics isKindOfClass:[NSArray class]]){
+        
+    }else if([pics isKindOfClass:[NSString class]]){
+        
+    }
 }
 
 @end

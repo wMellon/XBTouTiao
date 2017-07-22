@@ -14,9 +14,6 @@
 @interface TopTextBottomPicCell()
 
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UIImageView *imageView1;
-@property (nonatomic, strong) UIImageView *imageView2;
-@property (nonatomic, strong) UIImageView *imageView3;
 @property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) AuthorEvaluateTimeView *footerView;
 
@@ -82,13 +79,13 @@
     _titleLabel.text = model.title;
     _titleLabel.frame = layout.titleFrame;
     
-    _imageView1.image = [UIImage imageNamed:model.picUrlArray[0]];
+//    _imageView1.image = [UIImage imageNamed:model.picUrlArray[0]];
     _imageView1.frame = layout.image1Frame;
     
-    _imageView2.image = [UIImage imageNamed:model.picUrlArray[1]];
+//    _imageView2.image = [UIImage imageNamed:model.picUrlArray[1]];
     _imageView2.frame = layout.image2Frame;
     
-    _imageView3.image = [UIImage imageNamed:model.picUrlArray[2]];
+//    _imageView3.image = [UIImage imageNamed:model.picUrlArray[2]];
     _imageView3.frame = layout.image3Frame;
     
     [_footerView setModel:model.authorEvaluateTimeModel andLayout:layout.authorLayout];

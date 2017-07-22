@@ -12,6 +12,10 @@
 
 @interface TopTextBottomPicCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *imageView1;
+@property (nonatomic, strong) UIImageView *imageView2;
+@property (nonatomic, strong) UIImageView *imageView3;
+
 -(void)setModel:(TopTextBottomPicModel*)model andLayout:(TopTextBottomPicLayout*)layout;
 
 @end

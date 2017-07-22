@@ -31,9 +31,10 @@
 		F19E75EB1F219C96009E799E /* AuthorEvaluateTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75EA1F219C96009E799E /* AuthorEvaluateTimeModel.m */; };
 		F19E75EE1F21A67C009E799E /* BaseLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75ED1F21A67C009E799E /* BaseLayout.m */; };
 		F19E75F11F21A87A009E799E /* AuthorEvaluateTimeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75F01F21A87A009E799E /* AuthorEvaluateTimeLayout.m */; };
-		F19E75F51F2203F4009E799E /* NSString+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E75F41F2203F4009E799E /* NSString+Extend.m */; };
+		F19E79001F2266D8009E799E /* NSString+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E78FD1F2266D8009E799E /* NSString+Extend.m */; };
+		F19E79011F2266D8009E799E /* UIView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E78FF1F2266D8009E799E /* UIView+Convenience.m */; };
+		F19E79051F226707009E799E /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E79041F226707009E799E /* ImageManager.m */; };
 		F1C0D76F1F15288A00847EA0 /* UITableView+TitleIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */; };
-		F1D3E8611F0CC10C00A500C5 /* UIView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8601F0CC10C00A500C5 /* UIView+Convenience.m */; };
 		F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8651F0CCD4A00A500C5 /* ModuleModel.m */; };
 /* End PBXBuildFile section */
 
@@ -82,12 +83,14 @@
 		F19E75ED1F21A67C009E799E /* BaseLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLayout.m; sourceTree = "<group>"; };
 		F19E75EF1F21A87A009E799E /* AuthorEvaluateTimeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorEvaluateTimeLayout.h; sourceTree = "<group>"; };
 		F19E75F01F21A87A009E799E /* AuthorEvaluateTimeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorEvaluateTimeLayout.m; sourceTree = "<group>"; };
-		F19E75F31F2203F4009E799E /* NSString+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extend.h"; sourceTree = "<group>"; };
-		F19E75F41F2203F4009E799E /* NSString+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extend.m"; sourceTree = "<group>"; };
+		F19E78FC1F2266D8009E799E /* NSString+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extend.h"; sourceTree = "<group>"; };
+		F19E78FD1F2266D8009E799E /* NSString+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extend.m"; sourceTree = "<group>"; };
+		F19E78FE1F2266D8009E799E /* UIView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenience.h"; sourceTree = "<group>"; };
+		F19E78FF1F2266D8009E799E /* UIView+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convenience.m"; sourceTree = "<group>"; };
+		F19E79031F226707009E799E /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
+		F19E79041F226707009E799E /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
 		F1C0D76D1F15288A00847EA0 /* UITableView+TitleIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TitleIndex.h"; sourceTree = "<group>"; };
 		F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TitleIndex.m"; sourceTree = "<group>"; };
-		F1D3E85F1F0CC10C00A500C5 /* UIView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenience.h"; sourceTree = "<group>"; };
-		F1D3E8601F0CC10C00A500C5 /* UIView+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convenience.m"; sourceTree = "<group>"; };
 		F1D3E8641F0CCD4A00A500C5 /* ModuleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleModel.h; sourceTree = "<group>"; };
 		F1D3E8651F0CCD4A00A500C5 /* ModuleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleModel.m; sourceTree = "<group>"; };
 		FB2AA904E2D41DC8E4674478 /* libPods-XBTouTiao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XBTouTiao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,9 +146,9 @@
 		F11D78561F0B24E900DAA868 /* XBTouTiao */ = {
 			isa = PBXGroup;
 			children = (
+				F19E78FA1F2266C0009E799E /* Extension */,
 				F1D3E8621F0CCB3A00A500C5 /* Recommend */,
 				F11D786E1F0B259E00DAA868 /* Common */,
-				F1D3E85E1F0CC10C00A500C5 /* Category */,
 				F11D788F1F0B79D200DAA868 /* Resource */,
 				F11D787B1F0B279400DAA868 /* System */,
 				F11D78631F0B24EA00DAA868 /* Assets.xcassets */,
@@ -258,15 +261,33 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		F1D3E85E1F0CC10C00A500C5 /* Category */ = {
+		F19E78FA1F2266C0009E799E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				F1D3E85F1F0CC10C00A500C5 /* UIView+Convenience.h */,
-				F1D3E8601F0CC10C00A500C5 /* UIView+Convenience.m */,
-				F19E75F31F2203F4009E799E /* NSString+Extend.h */,
-				F19E75F41F2203F4009E799E /* NSString+Extend.m */,
+				F19E79021F2266EF009E799E /* Tool */,
+				F19E78FB1F2266D8009E799E /* Category */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F19E78FB1F2266D8009E799E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F19E78FC1F2266D8009E799E /* NSString+Extend.h */,
+				F19E78FD1F2266D8009E799E /* NSString+Extend.m */,
+				F19E78FE1F2266D8009E799E /* UIView+Convenience.h */,
+				F19E78FF1F2266D8009E799E /* UIView+Convenience.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		F19E79021F2266EF009E799E /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				F19E79031F226707009E799E /* ImageManager.h */,
+				F19E79041F226707009E799E /* ImageManager.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		F1D3E8621F0CCB3A00A500C5 /* Recommend */ = {
@@ -412,9 +433,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F19E75F11F21A87A009E799E /* AuthorEvaluateTimeLayout.m in Sources */,
-				F1D3E8611F0CC10C00A500C5 /* UIView+Convenience.m in Sources */,
 				F1534B0F1F1B57E80029EBED /* SliderPageReuseManager.m in Sources */,
 				F19E75D81F1FB085009E799E /* AuthorEvaluateTimeView.m in Sources */,
+				F19E79001F2266D8009E799E /* NSString+Extend.m in Sources */,
 				F1C0D76F1F15288A00847EA0 /* UITableView+TitleIndex.m in Sources */,
 				F11D78741F0B25B500DAA868 /* MainVC.m in Sources */,
 				F19E75EB1F219C96009E799E /* AuthorEvaluateTimeModel.m in Sources */,
@@ -424,13 +445,14 @@
 				F19E75DD1F209E61009E799E /* LeftTextRightImageCell.m in Sources */,
 				F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */,
 				F11D787A1F0B26CF00DAA868 /* MainModel.m in Sources */,
+				F19E79051F226707009E799E /* ImageManager.m in Sources */,
 				F19E75E51F219AB1009E799E /* TopTextBottomPicLayout.m in Sources */,
 				F11D78831F0B27B500DAA868 /* main.m in Sources */,
 				F19E75EE1F21A67C009E799E /* BaseLayout.m in Sources */,
+				F19E79011F2266D8009E799E /* UIView+Convenience.m in Sources */,
 				F11D78881F0B2B0800DAA868 /* MainLayout.m in Sources */,
 				F11D78811F0B27B500DAA868 /* AppDelegate.m in Sources */,
 				F19E75E81F219C1E009E799E /* TopTextBottomPicModel.m in Sources */,
-				F19E75F51F2203F4009E799E /* NSString+Extend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
