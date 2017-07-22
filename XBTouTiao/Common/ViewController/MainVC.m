@@ -19,6 +19,8 @@
 #import "TopTextBottomPicLayout.h"
 #import "TopTextBottomPicModel.h"
 #import "ImageManager.h"
+#import "LeftTextRightPicModel.h"
+#import "LeftTextRightPicLayout.h"
 
 #define PageSize 20 //每页20条
 
@@ -119,8 +121,17 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         return 0;
     }
     ModuleModel *moduleModel = self.moduleArray[tableView.titleIndex];
-    TopTextBottomPicLayout *layout = moduleModel.layoutSoure[indexPath.row];
-    return layout.cellHeight;
+    
+    id unknownLayout = moduleModel.layoutSoure[indexPath.row];
+    if([unknownLayout isKindOfClass:[TopTextBottomPicLayout class]]){
+        TopTextBottomPicLayout *layout = (TopTextBottomPicLayout*)unknownLayout;
+        return layout.cellHeight;
+    }else if([unknownLayout isKindOfClass:[LeftTextRightPicLayout class]]){
+        LeftTextRightPicLayout *layout = (LeftTextRightPicLayout*)unknownLayout;
+        return layout.cellHeight;
+    }else{
+        return 0;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -136,27 +147,46 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         return nil;
     }
     ModuleModel *moduleModel = self.moduleArray[tableView.titleIndex];
-    TopTextBottomPicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TopTextBottomPicCell class])];
-//    LeftTextRightImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
-    TopTextBottomPicModel *model = moduleModel.dataSource[indexPath.row];
-    TopTextBottomPicLayout *layout = moduleModel.layoutSoure[indexPath.row];
-    [cell setModel:model andLayout:layout];
-    //在这里开启加载、解析图片
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [model.picUrlArray enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIImage *image = [[ImageManager shareInstance] parseByImageName:imageName andWidth:layout.image1Frame.size.width height:layout.image1Frame.size.height];
+    id unknownModel = moduleModel.dataSource[indexPath.row];
+    if([unknownModel isKindOfClass:[TopTextBottomPicModel class]]){
+        
+        TopTextBottomPicModel *model = moduleModel.dataSource[indexPath.row];
+        TopTextBottomPicLayout *layout = moduleModel.layoutSoure[indexPath.row];
+        
+        TopTextBottomPicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TopTextBottomPicCell class])];
+        [cell setModel:model andLayout:layout];
+        //在这里开启加载、解析图片
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [model.picUrlArray enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL * _Nonnull stop) {
+                UIImage *image = [[ImageManager shareInstance] parseByImageName:imageName andWidth:layout.image1Frame.size.width height:layout.image1Frame.size.height];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if(idx == 0){
+                        cell.imageView1.image = image;
+                    }else if(idx == 1){
+                        cell.imageView2.image = image;
+                    }else if(idx == 2){
+                        cell.imageView3.image = image;
+                    }
+                });
+            }];
+        });
+        return cell;
+    }else if([unknownModel isKindOfClass:[LeftTextRightPicModel class]]){
+        LeftTextRightImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
+        LeftTextRightPicModel *model = moduleModel.dataSource[indexPath.row];
+        LeftTextRightPicLayout *layout = moduleModel.layoutSoure[indexPath.row];
+        [cell setModel:model andLayout:layout];
+        //在这里开启加载、解析图片
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            UIImage *image = [[ImageManager shareInstance] parseByImageName:model.imageName andWidth:layout.imageFrame.size.width height:layout.imageFrame.size.height];
             dispatch_async(dispatch_get_main_queue(), ^{
-                if(idx == 0){
-                    cell.imageView1.image = image;
-                }else if(idx == 1){
-                    cell.imageView2.image = image;
-                }else if(idx == 2){
-                    cell.imageView3.image = image;
-                }
+                cell.rightImage.image = image;
             });
-        }];
-    });
-    return cell;
+        });
+        return cell;
+    }else{
+        return nil;
+    }
 }
 
 #pragma mark - action

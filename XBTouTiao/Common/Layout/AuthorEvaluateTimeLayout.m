@@ -14,6 +14,7 @@
 -(instancetype)initWithFrame:(CGRect)frame andModel:(AuthorEvaluateTimeModel*)model{
     self = [super init];
     if(self){
+        _frame = frame;
         [self setModel:model];
     }
     return self;

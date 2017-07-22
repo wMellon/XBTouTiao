@@ -13,6 +13,8 @@
 #import "TopTextBottomPicModel.h"
 #import "AuthorEvaluateTimeModel.h"
 #import "TopTextBottomPicLayout.h"
+#import "LeftTextRightPicModel.h"
+#import "LeftTextRightPicLayout.h"
 
 #define PageSize 20 //每页多少条数据
 
@@ -55,7 +57,7 @@
 }
 
 void randomModel(ModuleModel *moduleModel){
-    NSArray *array = @[@(CellTypeTopTextBottomPic)];
+    NSArray *array = @[@(CellTypeTopTextBottomPic), @(CellTypeLeftTextRightPic)];
     NSInteger index = arc4random() % array.count;
     CellType cellType = [array[index] integerValue];
     switch (cellType) {
@@ -75,14 +77,30 @@ void randomModel(ModuleModel *moduleModel){
             [moduleModel.layoutSoure addObject:layout];
         }
             break;
+        case CellTypeLeftTextRightPic:
+        {
+            LeftTextRightPicModel *model = [[LeftTextRightPicModel alloc] init];
+            model.title = randomTitle();
+            model.imageName = [MainViewModel getImage:1];
             
+            AuthorEvaluateTimeModel *author = [[AuthorEvaluateTimeModel alloc] init];
+            author.authorName = @"呱呱";
+            author.evaluateCount = randomEvaluate();
+            author.evaluateStr = [NSString stringWithFormat:@"%ld评论", (long)author.evaluateCount];
+            author.time = @"9小时前";
+            model.authorModel = author;
+            [moduleModel.dataSource addObject:model];
+            LeftTextRightPicLayout *layout = [[LeftTextRightPicLayout alloc] initWithModel:model];
+            [moduleModel.layoutSoure addObject:layout];
+        }
+            break;
         default:
             break;
     }
 }
 
 NSString* randomTitle(){
-    NSArray *titleArray = @[@"坎坎坷坷扩多军多军所多军",@"达克赛德卡卡更快的看看工作餐接口报感觉阿萨德看看钢结构",@"达克赛德卡卡更快的看看工作餐接口报感觉阿萨德看看钢结构坎坎坷坷扩多军多军所多军"];
+    NSArray *titleArray = @[@"坎坎坷坷扩多军多军所多军钢结构钢结构",@"达克赛德卡卡更快的看看工作餐接口报感觉阿萨德看看钢结构",@"达克赛德卡卡更快的看看工作餐接口报感觉阿萨德看看钢结构坎坎坷坷扩多军多军所多军"];
     return titleArray[arc4random() % titleArray.count];
 }
 

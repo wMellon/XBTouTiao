@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class LeftTextRightPicModel;
+@class LeftTextRightPicLayout;
 
 @interface LeftTextRightImageCell : UITableViewCell
 
--(void)setModel:(id)moodel;
+@property (nonatomic, strong) UIImageView *rightImage;
+
+-(void)setModel:(LeftTextRightPicModel*)model andLayout:(LeftTextRightPicLayout*)layout;
 
 @end

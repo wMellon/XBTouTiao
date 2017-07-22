@@ -14,6 +14,7 @@
 @property (nonatomic, assign) CGRect authorFrame;
 @property (nonatomic, assign) CGRect evaluateFrame;
 @property (nonatomic, assign) CGRect timeFrame;
+@property (nonatomic, assign) CGRect frame;
 
 -(instancetype)initWithFrame:(CGRect)frame andModel:(AuthorEvaluateTimeModel*)model;
 

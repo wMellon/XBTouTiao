@@ -22,7 +22,8 @@
 
 //cellType
 typedef NS_ENUM(NSInteger,CellType){
-    CellTypeTopTextBottomPic = 0
+    CellTypeTopTextBottomPic = 0,
+    CellTypeLeftTextRightPic = 1
 };
 
 #endif /* ViewMacro_h */
