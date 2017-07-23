@@ -18,5 +18,6 @@
 +(MainLayout*)getLayout;
 //根据title获取
 +(ModuleModel*)getModuleByTitle:(NSString*)title;
++(void)moreDataByModule:(ModuleModel*)module;
 
 @end

@@ -130,6 +130,12 @@ static NSUInteger imageIndex;
     }
 }
 
++(void)moreDataByModule:(ModuleModel*)module{
+    for(int i = 0; i < PageSize; i ++){
+        randomModel(module);
+    }
+}
+
 #pragma mark - 图片操作
 
 +(void)parsePic:(id)pics{

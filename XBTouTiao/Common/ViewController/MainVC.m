@@ -21,6 +21,7 @@
 #import "ImageManager.h"
 #import "LeftTextRightPicModel.h"
 #import "LeftTextRightPicLayout.h"
+#import "UIViewController+PagingRefreshLoadMore.h"
 
 #define PageSize 20 //每页20条
 
@@ -29,7 +30,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     ScrollSideRight = 1
 };
 
-@interface MainVC ()<UITableViewDataSource,UIScrollViewDelegate, UITableViewDelegate>
+@interface MainVC ()<UITableViewDataSource,UIScrollViewDelegate, UITableViewDelegate,PagingRefreshLoadMoreDelegate>
 
 @property (nonatomic, strong) MainView *mainView;
 @property (nonatomic, strong) MainModel *mainModel;
@@ -189,6 +190,19 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     }
 }
 
+#pragma mark -PagingRefreshLoadMoreDelegate
+
+-(void)loadViewDataForTableView:(UITableView*)tableView andPageIndex:(NSString*)pageIndex andBlock:(void(^)(NSInteger count))block{
+    ModuleModel *module = self.moduleArray[self.currentTitleIndex];
+    if([pageIndex isEqualToString:@"1"]){
+        [module.dataSource removeAllObjects];
+        [module.layoutSoure removeAllObjects];
+    }
+    [MainViewModel moreDataByModule:module];
+    [tableView reloadData];
+    block(PageSize);
+}
+
 #pragma mark - action
 
 - (void)sliderToViewAtIndex:(NSInteger)index{
@@ -226,7 +240,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     UITableView *tableView = [self getTableView:index];
     if(tableView.isHit){
         //已有，并且可以直接展示的
-        NSLog(@"");
+//        NSLog(@"");
     }else if(tableView.isReused){
         //已有，但是需要替换数据源
     }else{
@@ -241,23 +255,29 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
     
     //加载数据
     if(self.currentTitleIndex >= self.moduleArray.count){
-        @weakify(self)
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            @strongify(self)
-            ModuleModel *moduleModel = [MainViewModel getModuleByTitle:self.mainModel.titleArray[self.currentTitleIndex]];
-            [self.moduleArray addObject:moduleModel];
-            
-            if(!tableView.isHit){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    @strongify(self)
-                    [self tableViewReload:tableView];
-                });
-            }
-            //这边要注意，显示时需要回到主线程。。。。
-            [self loadNextData];
-            [self loadPreviousData];
-        });
+        [self loadCurrentData:tableView];
+    }else{
+        [self loadNextData];
+        [self loadPreviousData];
     }
+}
+
+-(void)loadCurrentData:(UITableView*)tableView{
+    @weakify(self)
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        @strongify(self)
+        ModuleModel *moduleModel = [MainViewModel getModuleByTitle:self.mainModel.titleArray[self.currentTitleIndex]];
+        [self.moduleArray addObject:moduleModel];
+        if(!tableView.isHit){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @strongify(self)
+                [self tableViewReload:tableView];
+                //以下两个方法并没有进行数据的加载，只是更改tablView的frame而已
+                [self loadNextData];
+                [self loadPreviousData];
+            });
+        }
+    });
 }
 
 -(void)loadNextData{
@@ -302,6 +322,11 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
 
 -(UITableView*)getTableView:(NSInteger)index{
     UITableView *tableView = [[SliderPageReuseManager shareInstance] dequeueReuseableTableViewWithIndex:index];
+    if(!tableView.isHit){
+        //没有命中的tableView一律都要重新初始化
+        [self setPRLMTableView:tableView pageSize:PageSize pageBegin:1];
+        self.prlmDelegate = self;
+    }
     if(!tableView.isReused){
         [tableView registerClass:[TopTextBottomPicCell class] forCellReuseIdentifier:NSStringFromClass([TopTextBottomPicCell class])];
         [tableView registerClass:[LeftTextRightImageCell class] forCellReuseIdentifier:NSStringFromClass([LeftTextRightImageCell class])];

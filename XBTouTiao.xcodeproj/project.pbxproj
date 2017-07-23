@@ -34,6 +34,9 @@
 		F19E79001F2266D8009E799E /* NSString+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E78FD1F2266D8009E799E /* NSString+Extend.m */; };
 		F19E79011F2266D8009E799E /* UIView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E78FF1F2266D8009E799E /* UIView+Convenience.m */; };
 		F19E79051F226707009E799E /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E79041F226707009E799E /* ImageManager.m */; };
+		F19E7F0E1F2342A9009E799E /* LeftTextRightPicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E7F0D1F2342A9009E799E /* LeftTextRightPicLayout.m */; };
+		F19E7F111F234320009E799E /* LeftTextRightPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E7F101F234320009E799E /* LeftTextRightPicModel.m */; };
+		F19E7F141F23AFF1009E799E /* UIViewController+PagingRefreshLoadMore.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E7F131F23AFF1009E799E /* UIViewController+PagingRefreshLoadMore.m */; };
 		F1C0D76F1F15288A00847EA0 /* UITableView+TitleIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */; };
 		F1D3E8661F0CCD4A00A500C5 /* ModuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3E8651F0CCD4A00A500C5 /* ModuleModel.m */; };
 /* End PBXBuildFile section */
@@ -89,6 +92,12 @@
 		F19E78FF1F2266D8009E799E /* UIView+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convenience.m"; sourceTree = "<group>"; };
 		F19E79031F226707009E799E /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
 		F19E79041F226707009E799E /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
+		F19E7F0C1F2342A9009E799E /* LeftTextRightPicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTextRightPicLayout.h; sourceTree = "<group>"; };
+		F19E7F0D1F2342A9009E799E /* LeftTextRightPicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTextRightPicLayout.m; sourceTree = "<group>"; };
+		F19E7F0F1F234320009E799E /* LeftTextRightPicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTextRightPicModel.h; sourceTree = "<group>"; };
+		F19E7F101F234320009E799E /* LeftTextRightPicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTextRightPicModel.m; sourceTree = "<group>"; };
+		F19E7F121F23AFF1009E799E /* UIViewController+PagingRefreshLoadMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PagingRefreshLoadMore.h"; sourceTree = "<group>"; };
+		F19E7F131F23AFF1009E799E /* UIViewController+PagingRefreshLoadMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PagingRefreshLoadMore.m"; sourceTree = "<group>"; };
 		F1C0D76D1F15288A00847EA0 /* UITableView+TitleIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TitleIndex.h"; sourceTree = "<group>"; };
 		F1C0D76E1F15288A00847EA0 /* UITableView+TitleIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TitleIndex.m"; sourceTree = "<group>"; };
 		F1D3E8641F0CCD4A00A500C5 /* ModuleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleModel.h; sourceTree = "<group>"; };
@@ -179,6 +188,8 @@
 				F19E75E71F219C1E009E799E /* TopTextBottomPicModel.m */,
 				F19E75E91F219C96009E799E /* AuthorEvaluateTimeModel.h */,
 				F19E75EA1F219C96009E799E /* AuthorEvaluateTimeModel.m */,
+				F19E7F0F1F234320009E799E /* LeftTextRightPicModel.h */,
+				F19E7F101F234320009E799E /* LeftTextRightPicModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +247,8 @@
 				F19E75E41F219AB1009E799E /* TopTextBottomPicLayout.m */,
 				F19E75EF1F21A87A009E799E /* AuthorEvaluateTimeLayout.h */,
 				F19E75F01F21A87A009E799E /* AuthorEvaluateTimeLayout.m */,
+				F19E7F0C1F2342A9009E799E /* LeftTextRightPicLayout.h */,
+				F19E7F0D1F2342A9009E799E /* LeftTextRightPicLayout.m */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -273,6 +286,8 @@
 		F19E78FB1F2266D8009E799E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				F19E7F121F23AFF1009E799E /* UIViewController+PagingRefreshLoadMore.h */,
+				F19E7F131F23AFF1009E799E /* UIViewController+PagingRefreshLoadMore.m */,
 				F19E78FC1F2266D8009E799E /* NSString+Extend.h */,
 				F19E78FD1F2266D8009E799E /* NSString+Extend.m */,
 				F19E78FE1F2266D8009E799E /* UIView+Convenience.h */,
@@ -440,6 +455,7 @@
 				F11D78741F0B25B500DAA868 /* MainVC.m in Sources */,
 				F19E75EB1F219C96009E799E /* AuthorEvaluateTimeModel.m in Sources */,
 				F11D78771F0B262200DAA868 /* MainView.m in Sources */,
+				F19E7F111F234320009E799E /* LeftTextRightPicModel.m in Sources */,
 				F19E75D51F1FAEE1009E799E /* TopTextBottomPicCell.m in Sources */,
 				F11D788C1F0B35F200DAA868 /* MainViewModel.m in Sources */,
 				F19E75DD1F209E61009E799E /* LeftTextRightImageCell.m in Sources */,
@@ -448,7 +464,9 @@
 				F19E79051F226707009E799E /* ImageManager.m in Sources */,
 				F19E75E51F219AB1009E799E /* TopTextBottomPicLayout.m in Sources */,
 				F11D78831F0B27B500DAA868 /* main.m in Sources */,
+				F19E7F0E1F2342A9009E799E /* LeftTextRightPicLayout.m in Sources */,
 				F19E75EE1F21A67C009E799E /* BaseLayout.m in Sources */,
+				F19E7F141F23AFF1009E799E /* UIViewController+PagingRefreshLoadMore.m in Sources */,
 				F19E79011F2266D8009E799E /* UIView+Convenience.m in Sources */,
 				F11D78881F0B2B0800DAA868 /* MainLayout.m in Sources */,
 				F11D78811F0B27B500DAA868 /* AppDelegate.m in Sources */,
