@@ -17,5 +17,5 @@
 @property (nonatomic, strong) UIImageView *imageView3;
 
 -(void)setModel:(TopTextBottomPicModel*)model andLayout:(TopTextBottomPicLayout*)layout;
-
+-(void)setImage:(UIImage*)image forName:(NSString*)imageName andIndex:(NSInteger)index;
 @end

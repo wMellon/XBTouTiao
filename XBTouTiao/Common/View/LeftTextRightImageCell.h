@@ -15,5 +15,6 @@
 @property (nonatomic, strong) UIImageView *rightImage;
 
 -(void)setModel:(LeftTextRightPicModel*)model andLayout:(LeftTextRightPicLayout*)layout;
+-(void)setImage:(UIImage*)image forName:(NSString*)imageName;
 
 @end

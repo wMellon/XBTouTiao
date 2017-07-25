@@ -110,8 +110,10 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if([scrollView isKindOfClass:[UITableView class]]){
         UITableView *tableView = (UITableView*)scrollView;
-        ModuleModel *module = self.moduleArray[tableView.titleIndex];
-        module.contentOffsetY = scrollView.contentOffset.y;
+        if(tableView.titleIndex < self.moduleArray.count){
+            ModuleModel *module = self.moduleArray[tableView.titleIndex];
+            module.contentOffsetY = scrollView.contentOffset.y;
+        }
     }
 }
 
@@ -162,11 +164,11 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
                 UIImage *image = [[ImageManager shareInstance] parseByImageName:imageName andWidth:layout.image1Frame.size.width height:layout.image1Frame.size.height];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if(idx == 0){
-                        cell.imageView1.image = image;
+                        [cell setImage:image forName:imageName andIndex:0];
                     }else if(idx == 1){
-                        cell.imageView2.image = image;
+                        [cell setImage:image forName:imageName andIndex:1];
                     }else if(idx == 2){
-                        cell.imageView3.image = image;
+                        [cell setImage:image forName:imageName andIndex:2];
                     }
                 });
             }];
@@ -181,7 +183,7 @@ typedef NS_ENUM(NSInteger, ScrollSide) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             UIImage *image = [[ImageManager shareInstance] parseByImageName:model.imageName andWidth:layout.imageFrame.size.width height:layout.imageFrame.size.height];
             dispatch_async(dispatch_get_main_queue(), ^{
-                cell.rightImage.image = image;
+                [cell setImage:image forName:model.imageName];
             });
         });
         return cell;

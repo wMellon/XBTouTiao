@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) UILabel *leftLabel;
 @property (nonatomic, strong) AuthorEvaluateTimeView *footerView;
+@property (nonatomic, copy) NSString *imageName;
 
 @end
 
@@ -59,6 +60,7 @@
 }
 
 -(void)setModel:(LeftTextRightPicModel*)model andLayout:(LeftTextRightPicLayout*)layout{
+    _imageName = model.imageName;
     _leftLabel.text = model.title;
     _leftLabel.frame = layout.titleFrame;
     
@@ -66,6 +68,19 @@
     
     [_footerView setModel:model.authorModel andLayout:layout.authorLayout];
     _footerView.frame = layout.footerFrame;
+}
+
+#pragma mark - 重写
+
+-(void)prepareForReuse{
+    self.imageName = nil;
+    self.rightImage.image = nil;
+}
+
+-(void)setImage:(UIImage*)image forName:(NSString*)imageName{
+    if(self.imageName.length > 0 && [self.imageName isEqualToString:imageName]){
+        self.rightImage.image = image;
+    }
 }
 
 @end

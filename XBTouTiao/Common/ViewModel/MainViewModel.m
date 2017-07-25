@@ -43,6 +43,7 @@
 
 +(ModuleModel*)getModuleByTitle:(NSString*)title{
 //    NSLog(@"加载“%@”数据", title);
+    sleep(5);
     NSArray *titleArray = [self getModel].titleArray;
     ModuleModel *moduleModel = [[ModuleModel alloc] init];
     moduleModel.dataSource = [[NSMutableArray alloc] initWithCapacity:PageSize];

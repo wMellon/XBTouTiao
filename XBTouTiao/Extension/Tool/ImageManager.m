@@ -92,6 +92,7 @@
     CGContextRelease(context);
     CGImageRelease(imageRefWithoutAlpha);
     //存到缓存中
+    sleep(3);
     [self.systemCache setObject:imageWithoutAlpha forKey:imageName];
     return imageWithoutAlpha;
 }

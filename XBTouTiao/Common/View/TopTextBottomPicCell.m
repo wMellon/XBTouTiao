@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) AuthorEvaluateTimeView *footerView;
+@property (nonatomic, copy) NSArray *imageNameArray;
 
 @end
 
@@ -76,6 +77,7 @@
 }
 
 -(void)setModel:(TopTextBottomPicModel*)model andLayout:(TopTextBottomPicLayout*)layout{
+    _imageNameArray = model.picUrlArray;
     _titleLabel.text = model.title;
     _titleLabel.frame = layout.titleFrame;
     
@@ -90,6 +92,27 @@
     
     [_footerView setModel:model.authorEvaluateTimeModel andLayout:layout.authorLayout];
     _footerView.frame = layout.footerFrame;
+}
+
+#pragma mark - 重写
+
+-(void)prepareForReuse{
+    self.imageNameArray = nil;
+    self.imageView1.image = nil;
+    self.imageView2.image = nil;
+    self.imageView3.image = nil;
+}
+
+-(void)setImage:(UIImage*)image forName:(NSString*)imageName andIndex:(NSInteger)index{
+    if(index == 0 && self.imageNameArray.count > 0 && [self.imageNameArray[0] isEqualToString:imageName]){
+        self.imageView1.image = image;
+    }
+    if(index == 1 && self.imageNameArray.count > 1 && [self.imageNameArray[1] isEqualToString:imageName]){
+        self.imageView2.image = image;
+    }
+    if(index == 2 && self.imageNameArray.count > 2 && [self.imageNameArray[2] isEqualToString:imageName]){
+        self.imageView3.image = image;
+    }
 }
 
 @end
