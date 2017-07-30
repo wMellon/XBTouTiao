@@ -20,6 +20,9 @@
 #import "LeftTextRightImageCell.h"
 #import "SmartLoader.h"
 #import "UIViewController+TitleIndex.h"
+#import "UIViewController+PagingRefreshLoadMore.h"
+
+#define PageSize 20 //每页20条
 
 @interface DefaultVC ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -44,6 +47,7 @@
     _defaultView.tableView.delegate = self;
     [_defaultView.tableView registerClass:[TopTextBottomPicCell class] forCellReuseIdentifier:NSStringFromClass([TopTextBottomPicCell class])];
     [_defaultView.tableView registerClass:[LeftTextRightImageCell class] forCellReuseIdentifier:NSStringFromClass([LeftTextRightImageCell class])];
+    [self setPRLMTableView:_defaultView.tableView pageSize:PageSize pageBegin:1];
 }
 
 
@@ -51,11 +55,8 @@
  重新加载数据，如果之前有滚动偏移的话，也一起应用
  */
 -(void)reloadData{
-    _moduleModel = [[SmartLoader shareInstance].moduleDict objectForKey:@(self.titleIndex)];
-    if(!_moduleModel){
-        _moduleModel = [BaseViewModel getModuleByIndex:self.titleIndex];
-        [[SmartLoader shareInstance].moduleDict setObject:_moduleModel forKey:@(self.titleIndex)];
-    }
+    _moduleModel = [BaseViewModel getModuleByIndex:self.titleIndex];
+    [[SmartLoader shareInstance].moduleDict setObject:_moduleModel forKey:@(self.titleIndex)];
     [_defaultView.tableView reloadData];
 }
 
@@ -132,6 +133,20 @@
     }else{
         return nil;
     }
+}
+
+#pragma mark - 刷新加载
+
+-(void)loadViewDataForTableView:(UITableView*)tableView
+                   andPageIndex:(NSString*)pageIndex
+                       andBlock:(void(^)(NSInteger count))block{
+    if([pageIndex isEqualToString:@"1"]){
+        [self reloadData];
+    }else{
+        [BaseViewModel moreDataByModule:_moduleModel];
+        [_defaultView.tableView reloadData];
+    }
+    block(PageSize);//表明后面还有数据
 }
 
 #pragma mark - 懒加载

@@ -8,31 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol PagingRefreshLoadMoreDelegate <NSObject>
-
-@optional
-/**
- 重写该方法
- 
- @param pageIndex 返回当前的页码，字符型
- @param block 获取到数据执行这个回调，结束动态效果
- */
--(void)loadViewDataByPageIndex:(NSString*)pageIndex block:(void(^)(NSInteger count))block;
-
-/**
- 或者重写该方法，该方法带有tableView，适合页面拥有多个tableView时使用
- 
- @param tableView tableView
- @param pageIndex 索引
- @param block block
- */
--(void)loadViewDataForTableView:(UITableView*)tableView andPageIndex:(NSString*)pageIndex andBlock:(void(^)(NSInteger count))block;
-
-@end
-
 @interface UIViewController (PagingRefreshLoadMore)
 
-@property(nonatomic, weak) id<PagingRefreshLoadMoreDelegate> prlmDelegate;
+//@property(nonatomic, weak) id<PagingRefreshLoadMoreDelegate> prlmDelegate;
 
 /**
  需要使用时，调用这个方法传入参数，再重写底下的方法就行
@@ -45,5 +23,14 @@
                pageSize:(NSInteger)size
               pageBegin:(NSInteger)index;
 
-
+/**
+ 或者重写该方法，该方法带有tableView，适合页面拥有多个tableView时使用
+ 
+ @param tableView tableView
+ @param pageIndex 索引
+ @param block block
+ */
+-(void)loadViewDataForTableView:(UITableView*)tableView
+                   andPageIndex:(NSString*)pageIndex
+                       andBlock:(void(^)(NSInteger count))block;
 @end

@@ -48,65 +48,41 @@ static NSMutableDictionary *tableViews;
 }
 
 -(void)rlm_reloadViewData:(UITableView*)tableView{
-    if([self.prlmDelegate respondsToSelector:@selector(loadViewDataByPageIndex:block:)]){
-        NSMutableDictionary *dict = [tableViews objectForKey:getTableKey(tableView)];
-        [dict setObject:[dict objectForKey:prlmPageBeginKey] forKey:prlmPageIndexKey];
-//        NSLog(@"加载数据%@%@", getTableKey(tableView), [dict objectForKey:prlmPageIndexKey]);
-        [self.prlmDelegate loadViewDataByPageIndex:[NSString stringWithFormat:@"%ld", [[dict objectForKey:prlmPageIndexKey] integerValue]] block:^(NSInteger count) {
-            [tableView.mj_header endRefreshing];
-            [tableView.mj_footer resetNoMoreData];
-            if(count < [[dict objectForKey:prlmPageSizeKey] integerValue]){
-                [tableView.mj_footer endRefreshingWithNoMoreData];
-            }
-        }];
-    }else if([self.prlmDelegate respondsToSelector:@selector(loadViewDataForTableView:andPageIndex:andBlock:)]){
-        NSMutableDictionary *dict = [tableViews objectForKey:getTableKey(tableView)];
-        [dict setObject:[dict objectForKey:prlmPageBeginKey] forKey:prlmPageIndexKey];
-//        NSLog(@"加载数据%@%@", getTableKey(tableView), [dict objectForKey:prlmPageIndexKey]);
-        [self.prlmDelegate loadViewDataForTableView:tableView andPageIndex:[NSString stringWithFormat:@"%ld", [[dict objectForKey:prlmPageIndexKey] integerValue]] andBlock:^(NSInteger count) {
-            [tableView.mj_header endRefreshing];
-            [tableView.mj_footer resetNoMoreData];
-            if(count < [[dict objectForKey:prlmPageSizeKey] integerValue]){
-                [tableView.mj_footer endRefreshingWithNoMoreData];
-            }
-        }];
-    }
+    NSMutableDictionary *dict = [tableViews objectForKey:getTableKey(tableView)];
+    [dict setObject:[dict objectForKey:prlmPageBeginKey] forKey:prlmPageIndexKey];
+    //        NSLog(@"加载数据%@%@", getTableKey(tableView), [dict objectForKey:prlmPageIndexKey]);
+    [self loadViewDataForTableView:tableView andPageIndex:[NSString stringWithFormat:@"%ld", [[dict objectForKey:prlmPageIndexKey] integerValue]] andBlock:^(NSInteger count) {
+        [tableView.mj_header endRefreshing];
+        [tableView.mj_footer resetNoMoreData];
+        if(count < [[dict objectForKey:prlmPageSizeKey] integerValue]){
+            [tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+    }];
 }
 
 -(void)rlm_loadMoreDataSource:(UITableView*)tableView{
-    if([self.prlmDelegate respondsToSelector:@selector(loadViewDataByPageIndex:block:)]){
-        NSMutableDictionary *dict = [tableViews objectForKey:getTableKey(tableView)];
-        [dict setObject:@([[dict objectForKey:prlmPageIndexKey] integerValue] + 1) forKey:prlmPageIndexKey];
-//        NSLog(@"加载数据%@%@", getTableKey(tableView), [dict objectForKey:prlmPageIndexKey]);
-        [self.prlmDelegate loadViewDataByPageIndex:[NSString stringWithFormat:@"%ld", [[dict objectForKey:prlmPageIndexKey] integerValue]] block:^(NSInteger count) {
-            if(count < [[dict objectForKey:prlmPageSizeKey] integerValue]){
-                //没有更多数据了
-                [tableView.mj_footer endRefreshingWithNoMoreData];
-            }else{
-                [tableView.mj_footer endRefreshing];
-            }
-        }];
-    }else if([self.prlmDelegate respondsToSelector:@selector(loadViewDataForTableView:andPageIndex:andBlock:)]){
-        NSMutableDictionary *dict = [tableViews objectForKey:getTableKey(tableView)];
-        [dict setObject:@([[dict objectForKey:prlmPageIndexKey] integerValue] + 1) forKey:prlmPageIndexKey];
-//        NSLog(@"加载数据%@%@", getTableKey(tableView), [dict objectForKey:prlmPageIndexKey]);
-        [self.prlmDelegate loadViewDataForTableView:tableView andPageIndex:[NSString stringWithFormat:@"%ld", [[dict objectForKey:prlmPageIndexKey] integerValue]] andBlock:^(NSInteger count) {
-            if(count < [[dict objectForKey:prlmPageSizeKey] integerValue]){
-                //没有更多数据了
-                [tableView.mj_footer endRefreshingWithNoMoreData];
-            }else{
-                [tableView.mj_footer endRefreshing];
-            }
-        }];
-    }
+    NSMutableDictionary *dict = [tableViews objectForKey:getTableKey(tableView)];
+    [dict setObject:@([[dict objectForKey:prlmPageIndexKey] integerValue] + 1) forKey:prlmPageIndexKey];
+    //        NSLog(@"加载数据%@%@", getTableKey(tableView), [dict objectForKey:prlmPageIndexKey]);
+    [self loadViewDataForTableView:tableView andPageIndex:[NSString stringWithFormat:@"%ld", [[dict objectForKey:prlmPageIndexKey] integerValue]] andBlock:^(NSInteger count) {
+        if(count < [[dict objectForKey:prlmPageSizeKey] integerValue]){
+            //没有更多数据了
+            [tableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            [tableView.mj_footer endRefreshing];
+        }
+    }];
 }
 
--(void)setPrlmDelegate:(id<PagingRefreshLoadMoreDelegate>)prlmDelegate{
-    objc_setAssociatedObject(self, @selector(prlmDelegate), prlmDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
--(id)prlmDelegate{
-    return objc_getAssociatedObject(self, _cmd);
+/**
+ 或者重写该方法，该方法带有tableView，适合页面拥有多个tableView时使用
+ 
+ @param tableView tableView
+ @param pageIndex 索引
+ @param block block
+ */
+-(void)loadViewDataForTableView:(UITableView*)tableView andPageIndex:(NSString*)pageIndex andBlock:(void(^)(NSInteger count))block{
+    
 }
 
 NSString *getTableKey(UITableView *tableView){

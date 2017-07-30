@@ -121,6 +121,9 @@ static NSUInteger imageIndex;
     dispatch_once(&onceToken, ^{
         imageArray = [[NSBundle mainBundle] pathsForResourcesOfType:@"JPG" inDirectory:@""];
     });
+    if(imageArray.count <= 0){
+        return nil;
+    }
     if(imageArray.count - 1 < imageIndex + 3){
         imageIndex = 0;
     }

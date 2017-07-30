@@ -25,6 +25,7 @@
 -(UITableView *)tableView{
     if(!_tableView){
         _tableView = [[UITableView alloc] initWithFrame:self.bounds];
+        _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     }
     return _tableView;
 }

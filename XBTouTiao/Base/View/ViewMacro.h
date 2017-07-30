@@ -19,6 +19,7 @@
 #define BottomMargin 10
 #define PicTextMarginTop 10 //图文
 #define TextSpacing 10//文本间隔
+#define LineSpace 5//行间距
 
 //cellType
 typedef NS_ENUM(NSInteger,CellType){

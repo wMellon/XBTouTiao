@@ -10,10 +10,11 @@
 #import "AuthorEvaluateTimeView.h"
 #import "LeftTextRightPicModel.h"
 #import "LeftTextRightPicLayout.h"
+#import "XBTouTiaoLabel.h"
 
 @interface LeftTextRightImageCell()
 
-@property (nonatomic, strong) UILabel *leftLabel;
+@property (nonatomic, strong) XBTouTiaoLabel *leftLabel;
 @property (nonatomic, strong) AuthorEvaluateTimeView *footerView;
 @property (nonatomic, copy) NSString *imageName;
 
@@ -42,9 +43,9 @@
     return _rightImage;
 }
 
--(UILabel *)leftLabel{
+-(XBTouTiaoLabel *)leftLabel{
     if(!_leftLabel){
-        _leftLabel = [[UILabel alloc] init];
+        _leftLabel = [[XBTouTiaoLabel alloc] init];
         _leftLabel.font = [UIFont systemFontOfSize:15];
         _leftLabel.textColor = [UIColor blackColor];
         _leftLabel.numberOfLines = 0;
@@ -61,8 +62,9 @@
 
 -(void)setModel:(LeftTextRightPicModel*)model andLayout:(LeftTextRightPicLayout*)layout{
     _imageName = model.imageName;
-    _leftLabel.text = model.title;
+    
     _leftLabel.frame = layout.titleFrame;
+    [_leftLabel setCTText:model.title];
     
     _rightImage.frame = layout.imageFrame;
     

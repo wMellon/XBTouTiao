@@ -18,8 +18,6 @@
 #import "MainTitleModel.h"
 #import "SmartLoader.h"
 
-#define PageSize 20 //每页20条
-
 typedef NS_ENUM(NSInteger, ScrollSide) {
     ScrollSideLeft = -1,
     ScrollSideRight = 1
