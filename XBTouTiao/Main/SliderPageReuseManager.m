@@ -8,14 +8,24 @@
 
 #import "SliderPageReuseManager.h"
 #import "UITableView+TitleIndex.h"
+#import "UIViewController+TitleIndex.h"
 
 @interface SliderPageReuseManager()
 
+@property (nonatomic, strong) NSMutableDictionary *reuseClasses;
 @property (nonatomic, strong) NSMutableArray *reusePool;//复用池
 
 @end
 
 @implementation SliderPageReuseManager
+
+-(instancetype)init{
+    self = [super init];
+    if(self){
+        _reuseClasses = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
 
 +(instancetype)shareInstance{
     static SliderPageReuseManager *manager;
@@ -70,6 +80,63 @@
         NSLog(@"命中%@", @(tableView.titleIndex));
     }
     return tableView;
+}
+
+- (void)registerClass:(Class)someClass forReuseIdentifier:(NSString *)identifier{
+    [_reuseClasses setObject:someClass forKey:identifier];
+}
+
+-(UIViewController*)dequeueReuseableViewControllerWithIndex:(NSInteger)index andIdentifier:(NSString *)identifier{
+    __block UIViewController *viewController;
+    [self.reusePool enumerateObjectsUsingBlock:^(UIViewController *vc, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(vc.titleIndex == index) {
+            viewController = vc;
+            *stop = YES;
+        }
+    }];
+    //复用队列里没有找到
+    if (!viewController) {
+        //复用队列超过最大容量，取第一个做复用
+        if (self.reusePool.count >= self.reusePoolMaxSize) {
+            //获取离index最远的那个tableView返回
+            __block NSInteger temp = 0;
+            [self.reusePool enumerateObjectsUsingBlock:^(UIViewController *vc, NSUInteger idx, BOOL * _Nonnull stop) {
+                //获取最远的
+                if(temp == 0 ||
+                   temp < labs(vc.titleIndex - index)){
+                    temp = labs(vc.titleIndex - index);
+                    viewController = vc;
+                }
+            }];
+            if(![viewController.identifier isEqualToString:identifier]){
+                //如果是不同类型，那么需要重新实例化
+                Class class = [_reuseClasses objectForKey:identifier];
+                viewController = [[class alloc] init];
+                viewController.identifier = identifier;
+            }
+            viewController.titleIndex = index;
+            viewController.isHit = NO;
+            viewController.isReused = YES;
+            NSLog(@"重用%@", viewController);
+        }
+        //没有超过最大容量，实例化一个新的
+        else {
+            Class class = [_reuseClasses objectForKey:identifier];
+            viewController = [[class alloc] init];
+            viewController.titleIndex = index;
+            viewController.isReused = NO;
+            viewController.isHit = NO;
+            viewController.identifier = identifier;
+            [self.reusePool addObject:viewController];
+            NSLog(@"实例化%@", viewController);
+        }
+        
+    }else {
+        viewController.isHit = YES;
+        viewController.isReused = YES;
+        NSLog(@"命中%@", viewController);
+    }
+    return viewController;
 }
 
 #pragma mark - properties

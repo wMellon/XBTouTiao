@@ -62,8 +62,8 @@
     if (unsupportedColorSpace) {
         colorspaceRef = CGColorSpaceCreateDeviceRGB();
     }
-    NSUInteger bytesPerPixel = 4;
-    NSUInteger bytesPerRow = bytesPerPixel * width;
+//    NSUInteger bytesPerPixel = 4;
+//    NSUInteger bytesPerRow = bytesPerPixel * width;
     NSUInteger bitsPerComponent = 8;
     // kCGImageAlphaNone is not supported in CGBitmapContextCreate.
     // Since the original image here has no alpha info, use kCGImageAlphaNoneSkipLast
@@ -72,9 +72,9 @@
                                                  width,
                                                  height,
                                                  bitsPerComponent,
-                                                 bytesPerRow,
+                                                 0,//这个位置原先采用4*width，可是返回nil，设置为0可以用
                                                  colorspaceRef,
-                                                 kCGImageAlphaPremultipliedFirst);//切圆角要设置这个，不然可能会导致裁剪的区域变成黑色；不切圆角的时候不要设置这个属性，否则会进行alpha计算，消耗部分性能；
+                                                 kCGImageAlphaNoneSkipLast);//切圆角要设置kCGImageAlphaPremultipliedFirst，不然可能会导致裁剪的区域变成黑色；不切圆角的时候设置kCGImageAlphaNoneSkipLast，否则会进行alpha计算，消耗部分性能；
 //    //解码的同时切个圆角
 //    CGRect rect = CGRectMake(0, 0, width, height);
 //    // 根据一个rect创建一个椭圆

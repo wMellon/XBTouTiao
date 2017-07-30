@@ -15,4 +15,8 @@
 +(instancetype)shareInstance;
 - (UITableView *)dequeueReuseableTableViewWithIndex:(NSInteger)index;
 
+- (void)registerClass:(Class)someClass forReuseIdentifier:(NSString *)identifier;
+
+-(UIViewController*)dequeueReuseableViewControllerWithIndex:(NSInteger)index andIdentifier:(NSString *)identifier;
+
 @end
